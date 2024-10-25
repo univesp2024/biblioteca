@@ -15,10 +15,7 @@ $routes->get('logout','LoginController::logout', ['as'=> 'logout']);
 # ------------------------------------ [Home] 
 $routes->get('home','HomeController::index', ['as'=> 'home', 'filter' => 'authGuard']);
 
-$routes->get('ficticios','HomeController::ficticios', ['as'=> 'ficticios']);
-$routes->get('limpatabela','HomeController::limpatabela', ['as'=> 'limpatabela']);
-$routes->get('doacao_confirmar/(:any)','HomeController::doacao_confirmar/$1', ['as'=> 'doacao_confirmar']);
-$routes->get('doacao_rejeitar/(:any)','HomeController::doacao_rejeitar/$1', ['as'=> 'doacao_rejeitar']);
+
 
 $routes->get('limpacookie','HomeController::limpacookie', ['filter' => 'authGuard']);
 

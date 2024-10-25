@@ -1,5 +1,7 @@
 <?php if ($environment!= 'production'): ?>
+<?php endif;?>
 
+<?php if ($environment== 'development'): ?>
 <?php endif;?>
 
 CTRL + G -> Vai para a linha
@@ -11,3 +13,5 @@ CTRL + Shift + P -> Document Format (Para identar)
 https://bootstrapmade.com/demo/NiceAdmin/
 
 php spark serve
+
+

@@ -131,7 +131,7 @@ class UsuarioController extends BaseController
     {
 
         $model = new UsuarioModel();
-        $modelLocais = new LocaisModel();
+        //$modelLocais = new LocaisModel();
         $id_usuario = session()->get('id_usuario');
         #var_dump($id_usuario);
         #die();
@@ -139,7 +139,7 @@ class UsuarioController extends BaseController
         //return view('usuario/MeuPerfilView', ['dadosUsuario' => $dadosUsuario]);
         
         echo view("admin/template/HeaderView");
-        echo view("admin/template/SidebarView", ['environment' => ENVIRONMENT,  'hasData' => $modelLocais->hasData()]);
+        echo view("admin/template/SidebarView", ['environment' => ENVIRONMENT,  'hasData' => '$modelLocais->hasData()']);
         echo view('admin/MeuPerfilView', ['dadosUsuario' => $dadosUsuario]);
         echo view("admin/template/FooterView");
 
@@ -149,7 +149,7 @@ class UsuarioController extends BaseController
     {
 
         $model = new UsuarioModel();
-        $modelLocais = new LocaisModel();
+        //$modelLocais = new LocaisModel();
         
         $id_usuario = session()->get('id_usuario');
         
@@ -161,7 +161,7 @@ class UsuarioController extends BaseController
         //return view('usuario/MeuPerfilView', ['dadosUsuario' => $dadosUsuario]);
         
         echo view("usuario/template/HeaderView");
-        echo view("usuario/template/SidebarView", ['environment' => ENVIRONMENT,  'hasData' => $modelLocais->hasData()]);
+        echo view("usuario/template/SidebarView", ['environment' => ENVIRONMENT,  'hasData' => '$modelLocais->hasData()']);
         
         echo view('usuario/MeuPerfilView', ['dadosUsuario' => $dadosUsuario]);
         echo view("usuario/template/FooterView");
@@ -187,20 +187,20 @@ class UsuarioController extends BaseController
     }
 
     public function alterarsenha() {
-        $modelLocais = new LocaisModel();
+        //$modelLocais = new LocaisModel();
         $modelUser = new UsuarioModel();
         $idUser = session()->get('id_usuario');
         $dadosUsuario = $modelUser->getByUserId($idUser);
 
         if (session('status')==99) {
             echo view("admin/template/HeaderView");
-            echo view("admin/template/SidebarView", ['environment' => ENVIRONMENT,  'hasData' => $modelLocais->hasData()]);
+            echo view("admin/template/SidebarView", ['environment' => ENVIRONMENT,  'hasData' => '$modelLocais->hasData()']);
             echo view('admin/AlterarSenhaView', ['dadosUsuario' => $dadosUsuario]);
             echo view("admin/template/FooterView");
         }
         else {
             echo view("usuario/template/HeaderView");
-            echo view("usuario/template/SidebarView", ['environment' => ENVIRONMENT,  'hasData' => $modelLocais->hasData()]);
+            echo view("usuario/template/SidebarView", ['environment' => ENVIRONMENT,  'hasData' => '$modelLocais->hasData()']);
             echo view('usuario/AlterarSenhaView', ['dadosUsuario' => $dadosUsuario]);
             echo view("usuario/template/FooterView");
         }

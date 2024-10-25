@@ -92,7 +92,7 @@
                 <div class="user_card">
                     <div class="d-flex justify-content-center">
                         <div class="brand_logo_container">
-                            <img src="public/assets/img/logo.PNG"
+                            <img src="/assets/img/logo.PNG"
                                 class="brand_logo" alt="Logo">
                         </div>
                     </div>
