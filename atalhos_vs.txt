@@ -9,3 +9,5 @@ CTRL + K CTRL + C -> Comentar a linha
 CTRL + Shift + P -> Document Format (Para identar)
 
 https://bootstrapmade.com/demo/NiceAdmin/
+
+php spark serve
