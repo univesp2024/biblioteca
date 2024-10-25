@@ -16,6 +16,9 @@ $routes->get('logout','LoginController::logout', ['as'=> 'logout']);
 $routes->get('home','HomeController::index', ['as'=> 'home', 'filter' => 'authGuard']);
 
 
+# ------------------------------------ [Livros] 
+$routes->get('emprestar_livro','LivroController::index', ['as'=> 'emprestar_livro', 'filter' => 'authGuard']);
+
 
 $routes->get('limpacookie','HomeController::limpacookie', ['filter' => 'authGuard']);
 

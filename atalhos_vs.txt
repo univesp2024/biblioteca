@@ -15,3 +15,13 @@ https://bootstrapmade.com/demo/NiceAdmin/
 php spark serve
 
 
+
+Recuperando informações do usuário:
+$session = \Config\Services::session();
+$id_usuario = $session->get('id_usuario');
+$cpf = $session->get('cpf');
+$nome_completo = $session->get('nome_completo');
+$email = $session->get('e-mail');
+$status = $session->get('status');
+$logged_in = $session->get('logged_in');
+echo $id_usuario;

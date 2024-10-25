@@ -88,7 +88,7 @@
               <h6>
                 <?= session()->get('nome_completo') ?>
               </h6>
-              <span>Usuário Doador</span>
+              <span>Usuário</span>
             </li>
             <li>
               <hr class="dropdown-divider">

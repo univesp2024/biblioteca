@@ -4,7 +4,7 @@
       &copy; Copyright <strong><span>2024</span></strong>. Todos os direitos reservados
     </div>
     <div class="credits">
-      Projeto Integrador - Univesp 2024
+      Projeto Integrador 2 - Univesp 2024
     </div>
   </footer><!-- End Footer -->
 

@@ -29,7 +29,7 @@ class HomeController extends BaseController
             'doacoes' => '$doacoes',
             'qtdeDoacaoRealizada' => '$qtdeDoacaoRealizada',
             'qtdeSolicitacaoRealizada' => '$qtdeSolicitacaoRealizada',
-            'qtdeTotalDoado' => '$qtdeTotalDoado',
+            'qtdeTotalDoado' => 'info',
             'dataultimaDoacao' => '$dataultimaDoacao',
             'dataultimasolicitacao' => '$dataultimasolicitacao',
             'emailcookie' => $emailcookie
