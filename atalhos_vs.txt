@@ -1,0 +1,11 @@
+<?php if ($environment!= 'production'): ?>
+
+<?php endif;?>
+
+CTRL + G -> Vai para a linha
+CTRL + P -> Pesquisa o nome do arquivo
+ALT + setas -> Movimentar o texto
+CTRL + K CTRL + C -> Comentar a linha
+CTRL + Shift + P -> Document Format (Para identar)
+
+https://bootstrapmade.com/demo/NiceAdmin/
