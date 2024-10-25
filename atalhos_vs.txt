@@ -14,7 +14,7 @@ https://bootstrapmade.com/demo/NiceAdmin/
 
 php spark serve
 
-
+php spark make:model LivroModel
 
 Recuperando informações do usuário:
 $session = \Config\Services::session();

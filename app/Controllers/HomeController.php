@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 use App\Models\UsuarioModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Helpers\RandomUserHelper;
+use App\Models\LivroModel;
+use App\Models\EmprestimosModel;
 class HomeController extends BaseController
 {
     public function index()
@@ -18,6 +20,13 @@ class HomeController extends BaseController
 
         $id_usuario = session()->get('id_usuario');
         $emailcookie = $this->request->getCookie('emailteste');
+
+        $livroModel = new LivroModel();
+        $emprestimoModel = new EmprestimosModel();
+
+        $data['total_livros'] = $livroModel->contarLivros();
+        $data['livros_emprestados'] = $emprestimoModel->contarEmprestados();
+        $data['livros_disponiveis'] = $data['total_livros']-$data['livros_emprestados'];
         
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
@@ -27,12 +36,14 @@ class HomeController extends BaseController
         
         echo view("usuario/MainView", [
             'doacoes' => '$doacoes',
-            'qtdeDoacaoRealizada' => '$qtdeDoacaoRealizada',
-            'qtdeSolicitacaoRealizada' => '$qtdeSolicitacaoRealizada',
+            'qtdeDoacaoRealizada' => '100',
+            'qtdeSolicitacaoRealizada' => '10',
             'qtdeTotalDoado' => 'info',
             'dataultimaDoacao' => '$dataultimaDoacao',
             'dataultimasolicitacao' => '$dataultimasolicitacao',
-            'emailcookie' => $emailcookie
+            'emailcookie' => $emailcookie,
+            'total_livros' => $data['livros_disponiveis'],
+            'livros_emprestados' => $data['livros_emprestados']
 
         ]);
         echo view("usuario/template/FooterView");

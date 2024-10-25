@@ -1,14 +1,9 @@
 <main id="main" class="main">
-
-  <!-- Meu debug -->
   <?php
-
-  #var_dump($doacoes); 
-#die();
-# echo count($doacoes[0]);
-  
+  #var_dump($dados); 
+  #die();
+  # echo count($doacoes[0]);
   ?>
-
 
   <div class="pagetitle">
     <h1>Página inicial</h1>
@@ -35,104 +30,54 @@
   <!-- Fim do debug -->
 
   <section class="section dashboard">
-
-
     <?php // var_dump($doacoes)  ?>
-
     <div class="row">
-
-      <!-- Left side columns -->
       <div class="col-lg-12">
         <div class="row">
-
-
-<!--        
-          
-          <div class="col-xxl-4 col-md-6">
+          <!-- Primeira coluna -->
+          <div class="col-md-6">
             <div class="card info-card sales-card">
               <div class="card-body">
-                <h5 class="card-title">Doações <span>| Realizadas</span></h5>
+                <h5 class="card-title">Disponíveis <span>| Livros</span></h5>
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-balloon-heart-fill"></i>
+                    <i class="bi bi-journal"></i>
                   </div>
                   <div class="ps-3">
-                    <h6>
-                      <?= $qtdeDoacaoRealizada; ?>
-                    </h6>
+                    <h6><?= $total_livros; ?></h6>
                   </div>
                 </div>
               </div>
-              <div class="ps-3">
-              Última doação em <?= $dataultimaDoacao; ?>
-              </div>
+              <!-- <div class="ps-3">Última doação em <?= $dataultimaDoacao; ?></div> -->
+              <a href="empresta.php" class="btn btn-success mt-3 ms-3 me-3">
+                <i class="bi bi-arrow-up-circle me-2"></i>Emprestar livro
+              </a>
             </div>
           </div>
 
-          
-          <div class="col-xxl-4 col-md-6">
+          <!-- Segunda coluna -->
+          <div class="col-md-6">
             <div class="card info-card revenue-card">
               <div class="card-body">
-                <h5 class="card-title">Doações <span>| Solicitadas</span></h5>
+                <h5 class="card-title">Emprestados <span>| Livros</span></h5>
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-heart-pulse"></i>
+                    <i class="bi bi-journal-arrow-up"></i>
                   </div>
                   <div class="ps-3">
-                    <h6>
-                      <?= $qtdeSolicitacaoRealizada; ?>
-                    </h6>
+                    <h6><?= $livros_emprestados; ?></h6>
                   </div>
                 </div>
               </div>
-              <div class="ps-3">
-              Última solicitação em <?= $dataultimasolicitacao ?>
-              </div>
+              <!-- <div class="ps-3">Última doação em <?= $dataultimaDoacao; ?></div> -->
+              <a href="empresta.php" class="btn btn-success mt-3 ms-3 me-3">
+                <i class="bi bi-arrow-down-circle me-2"></i>Devolver livro
+              </a>
             </div>
           </div>
-
-  -->
-
-          <!-- Card -->
-          <div class="col-xxl-4 col-xl-12">
-            <div class="card info-card customers-card">
-              <div class="card-body">
-                <h5 class="card-title">Vidas <span>| Salvas</span></h5>
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-newspaper"></i>
-                  </div>
-                  <div class="ps-3">
-                    <h6>
-                      <?= $qtdeTotalDoado; ?>
-                    </h6>
-                  </div>
-                </div>
-
-              </div>
-              <div class="ps-3">
-                Você faz parte dessa conquista!
-                </div>
-            </div>
-          </div><!-- End Card -->
-
-
-
-
-
-
-
-
-          </div>
-
-        </div><!-- End Recent  -->
-
-
+        </div>
       </div>
-    </div><!-- End Left side columns -->
-
-
     </div>
-  </section>
 
-</main><!-- End #main -->
+  </section>
+</main>

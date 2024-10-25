@@ -1,24 +1,21 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\LivroModel;
 
 class LivroController extends BaseController
 {
-    public function indexa(): string
-    {
-        return view('Livro/EmprestarView', [
-            'environment' => ENVIRONMENT
-        ]);
-    }
-
 
     public function index()
     {
 
+        $livroModel = new LivroModel();
+        $data['livros'] = $livroModel->findAll();
+
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
             'environment' => ENVIRONMENT, 
-            'hasData' => ''
+            'hasData' => $data
         ]);
         
         echo view('Livro/EmprestarView', [
