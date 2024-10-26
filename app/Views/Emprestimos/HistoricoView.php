@@ -5,7 +5,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item active">
-            <i>Debug:</i> View/Livro/EmprestarView.php <i>Controller:</i> LivroController
+            <i>Debug:</i> View/Emprestimo/HistoricoView.php <i>Controller:</i> EmprestimoController
           </li>
         </ol>
       </nav>
@@ -13,11 +13,11 @@
   <?php endif; ?>
 
   <div class="pagetitle">
-    <h1>Escolha o livro para emprestar</h1>
+    <h1>Histórico de empréstimo de livros</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="home">Início</a></li>
-        <li class="breadcrumb-item">Emprestar livro</li>
+        <li class="breadcrumb-item">Histórico Empréstimos</li>
       </ol>
     </nav>
   </div>
@@ -28,19 +28,18 @@
         <div class="card info-card customers-card">
           <div class="card-body">
             <h5 class="card-title">Livros <span>| Disponíveis</span></h5>
-            <input type="text" id="search" placeholder="Pesquisar livros..." class="form-control mb-3">
+            <input type="text" id="search" placeholder="Pesquisar..." class="form-control mb-3">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Tombo</th>
+                  <th>Id</th>
+                  <th>Empréstimo</th>
+                  <th class="text-center">Tombo</th>
                   <th>Título</th>
-                  <th>Autor</th>
-                  <th>Gênero</th>
-                  <th>Ano</th>
-                  <th>Disponível</th>
-                  <th>Estante</th>
-                  <th>Prateleira</th>
-                  <th class="text-center">Ação</th>
+                  <th>RA</th>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody id="book-table"></tbody>
@@ -72,22 +71,24 @@
     const end = start + rowsPerPage;
     const pageData = data.slice(start, end); // Obtém os registros para a página atual
 
-    pageData.forEach(livro => {
-      const encodedlivroId = btoa(unescape(encodeURIComponent(livro.id_livro*44787654548)));
-      const link = livro.quantidade_disponivel > 0 
-        ? `<a href="finaliza_emprestimo/${encodedlivroId}" class="btn btn-success">Selecionar</a>`
-        : `<span class="btn btn-secondary disabled">Indisponível</span>`;
+    function formatarData(dataString) {
+        const data = new Date(dataString);
+        const dia = String(data.getDate()).padStart(2, '0');
+        const mes = String(data.getMonth() + 1).padStart(2, '0');
+        const ano = data.getFullYear();
+        return `${dia}/${mes}/${ano}`;
+    }
 
+    pageData.forEach(livro => {
       const row = `<tr>
-        <td>${livro.id_livro_formatado}</td>
+        <td>${livro.id_emprestimo}</td>
+        <td>${formatarData(livro.data_emprestimo)}</td>
+        <td class="text-center">${livro.id_livro_formatado}</td>
         <td>${livro.titulo}</td>
-        <td>${livro.autor}</td>
-        <td>${livro.genero}</td>
-        <td class="text-center">${livro.ano_publicacao}</td>
-        <td class="text-center">${livro.quantidade_disponivel}</td>
-        <td class="text-center">${livro.estante}</td>
-        <td class="text-center">${livro.prateleira}</td>
-        <td class="text-center">${link}</td>
+        <td>${livro.id_aluno_formatado}</td>
+        <td>${livro.nome}</td>
+        <td>${livro.email}</td>
+        <td>${livro.status}</td>
       </tr>`;
       
       tbody.innerHTML += row;
@@ -120,9 +121,10 @@
     const searchTerm = this.value.toLowerCase();
     const filteredData = dados.filter(livro =>
       Object.values(livro).some(value =>
-        value.toString().toLowerCase().includes(searchTerm)
+      (value ? value.toString().toLowerCase() : "").includes(searchTerm)
       )
     );
+
 
     currentPage = 1; // Reseta para a primeira página
     renderTable(currentPage, filteredData); // Renderiza a tabela com os dados filtrados

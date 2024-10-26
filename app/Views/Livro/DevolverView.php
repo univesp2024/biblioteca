@@ -29,7 +29,7 @@
         <div class="card info-card customers-card">
           <div class="card-body">
             <h5 class="card-title">Livros <span>| Emprestados</span></h5>
-            <input type="text" id="search" placeholder="Pesquisar livros..." class="form-control mb-3">
+            <input type="text" id="search" placeholder="Pesquisar..." class="form-control mb-3">
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -125,10 +125,10 @@
       const dataFormatada = formatarData(livro.data_emprestimo);
       const row = `
         <tr>
-          <td class="text-center">${livro.id_livro}</td>
+          <td class="text-center">${livro.id_livro_formatado}</td>
           <td>${livro.titulo}</td>
           <td class="text-center">${dataFormatada}</td>
-          <td class="text-center">${livro.id_aluno}</td>
+          <td class="text-center">${livro.id_aluno_formatado}</td>
           <td>${livro.nome}</td>
           <td>${livro.telefone}</td>
           <td>${livro.email}</td>

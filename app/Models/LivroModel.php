@@ -64,7 +64,17 @@ class LivroModel extends Model
 
     public function dados()
     {
-        return $this->findAll();
+
+        $sql = "SELECT livros.*, 
+                CONCAT('T', LPAD(id_livro, 4, '0')) AS id_livro_formatado
+                FROM livros";
+        $query = $this->db->query($sql);
+        return $query->getResult();
+        //return $query->getResult();
+
+        //CONCAT('RA', LPAD(alunos.id_aluno, 4, '0')) AS id_aluno_formatado, alunos.*, 
+        //CONCAT('T', LPAD(livros.id_livro, 4, '0')) AS id_livro_formatado
+        //return $this->findAll();
     }
 
     public function dados_by_id($id_livro)

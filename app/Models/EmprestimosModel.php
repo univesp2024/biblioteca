@@ -73,7 +73,9 @@ class EmprestimosModel extends Model
     public function pega_dados()
     {
         
-        $sql = "SELECT emprestimos.*, livros.titulo, livros.autor, alunos.*
+        $sql = "SELECT emprestimos.*, livros.titulo, livros.autor, alunos.*,
+                       CONCAT('T', LPAD(livros.id_livro, 4, '0')) AS id_livro_formatado,
+                       CONCAT('RA', LPAD(alunos.id_aluno, 4, '0')) AS id_aluno_formatado
                 FROM emprestimos as emprestimos
                 INNER JOIN livros as livros ON livros.id_livro = emprestimos.id_livro
                 INNER JOIN alunos as alunos ON alunos.id_aluno = emprestimos.id_aluno
@@ -100,6 +102,30 @@ class EmprestimosModel extends Model
         }
     }
     
+
+    public function dados_historico_emprestimos(): array
+    {
+        $sql = "SELECT emprestimos.*, livros.titulo, livros.autor, alunos.*
+                FROM emprestimos as emprestimos
+                INNER JOIN livros as livros ON livros.id_livro = emprestimos.id_livro
+                INNER JOIN alunos as alunos ON alunos.id_aluno = emprestimos.id_aluno
+                ORDER BY emprestimos.id_emprestimo DESC
+                ";
+
+        $sql = "SELECT emprestimos.*, livros.titulo, livros.autor, 
+                CONCAT('RA', LPAD(alunos.id_aluno, 4, '0')) AS id_aluno_formatado, 
+                alunos.*, 
+                CONCAT('T', LPAD(livros.id_livro, 4, '0')) AS id_livro_formatado
+                FROM emprestimos AS emprestimos
+                INNER JOIN livros AS livros ON livros.id_livro = emprestimos.id_livro
+                INNER JOIN alunos AS alunos ON alunos.id_aluno = emprestimos.id_aluno
+                ORDER BY emprestimos.id_emprestimo DESC
+                ";
+
+
+        $query = $this->db->query($sql);
+        return $query->getResult();
+    }
 
     
 }

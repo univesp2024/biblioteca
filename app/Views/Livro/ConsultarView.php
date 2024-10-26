@@ -1,5 +1,4 @@
 <main id="main" class="main">
-
   <div class="pagetitle">
     <h1>Consultar livro</h1>
     <nav>
@@ -15,7 +14,6 @@
       <div class="col-lg-12">
         <div class="card info-card customers-card">
           <div class="card-body">
-            
             <input type="text" id="search" placeholder="Pesquisar livros..." class="form-control mb-3 mt-4">
             <table class="table table-striped">
               <thead>
@@ -42,13 +40,13 @@
       </div>
     </div>
   </section>
-
 </main>
 
 <script>
   const dados = <?= json_encode($dados) ?>; // Converte os dados PHP para JSON em JS
   const rowsPerPage = 10; // Quantidade de livros por página
   let currentPage = 1;
+  let filteredData = [...dados]; // Inicialmente contém todos os dados
 
   // Função para renderizar uma página específica
   function renderTable(page = 1) {
@@ -57,11 +55,11 @@
 
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
-    const pageData = dados.slice(start, end); // Dados da página atual
+    const pageData = filteredData.slice(start, end); // Dados da página atual
 
     pageData.forEach(livro => {
       const row = `<tr>
-        <td>${livro.id_livro}</td>
+        <td>${livro.id_livro_formatado}</td>
         <td>${livro.titulo}</td>
         <td>${livro.autor}</td>
         <td>${livro.genero}</td>
@@ -78,7 +76,7 @@
 
   // Função para renderizar a paginação
   function renderPagination() {
-    const totalPages = Math.ceil(dados.length / rowsPerPage);
+    const totalPages = Math.max(Math.ceil(filteredData.length / rowsPerPage), 1); // No mínimo 1 página
     const pagination = document.getElementById('pagination');
     pagination.innerHTML = ''; // Limpa a paginação anterior
 
@@ -96,43 +94,17 @@
   }
 
   // Função de pesquisa
-  document.getElementById('search').addEventListener('input', function() {
+  document.getElementById('search').addEventListener('input', function () {
     const searchTerm = this.value.toLowerCase();
-    const filteredData = dados.filter(livro =>
+    filteredData = dados.filter(livro =>
       Object.values(livro).some(value =>
         value.toString().toLowerCase().includes(searchTerm)
       )
     );
 
-    renderFilteredTable(filteredData);
+    currentPage = 1; // Reseta para a primeira página ao pesquisar
+    renderTable(currentPage);
   });
-
-  // Renderiza a tabela filtrada
-  function renderFilteredTable(filteredData) {
-    const tbody = document.getElementById('book-table');
-    tbody.innerHTML = ''; // Limpa a tabela
-
-    const totalPages = Math.ceil(filteredData.length / rowsPerPage);
-    const start = (currentPage - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-    const pageData = filteredData.slice(start, end);
-
-    pageData.forEach(livro => {
-      const row = `<tr>
-        <td>${livro.id_livro}</td>
-        <td>${livro.titulo}</td>
-        <td>${livro.autor}</td>
-        <td>${livro.genero}</td>
-        <td>${livro.ano_publicacao}</td>
-        <td class="text-center">${livro.quantidade_disponivel}</td>
-        <td class="text-center">${livro.estante}</td>
-        <td class="text-center">${livro.prateleira}</td>
-      </tr>`;
-      tbody.innerHTML += row;
-    });
-
-    renderPagination(filteredData);
-  }
 
   // Inicializa a tabela
   renderTable();

@@ -5,6 +5,19 @@
   # echo count($doacoes[0]);
   ?>
 
+  <!-- Mostrando o caminho do arquivo apenas quando em desenvolvimento -->
+  <?php if ($environment == 'development'): ?>
+    <div class="pagetitle">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active"><i>Debug:</i> View/Usuario/MainView.php <i>Controller:</i> HomeController
+          </li>
+        </ol>
+      </nav>
+    </div>
+  <?php endif; ?>
+  <!-- Fim do debug -->  
+
 <style>
         /* Centraliza e destaca o alerta na tela */
         .alert-container {
@@ -60,18 +73,6 @@
     </nav>
   </div><!-- End Page Title -->
 
-  <!-- Mostrando o caminho do arquivo apenas quando em desenvolvimento -->
-  <?php if ($environment == 'development'): ?>
-    <div class="pagetitle">
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item active"><i>Debug:</i> View/Usuario/MainView.php <i>Controller:</i> HomeController
-          </li>
-        </ol>
-      </nav>
-    </div>
-  <?php endif; ?>
-  <!-- Fim do debug -->
 
   <section class="section dashboard">
     <?php // var_dump($doacoes)  ?>

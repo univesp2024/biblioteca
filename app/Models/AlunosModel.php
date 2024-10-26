@@ -43,7 +43,14 @@ class AlunosModel extends Model
 
     public function dados()
     {
-        return $this->findAll();
+
+        $sql = "SELECT alunos.*, 
+        CONCAT('T', LPAD(id_aluno, 4, '0')) AS id_aluno_formatado
+        FROM alunos";
+        $query = $this->db->query($sql);
+        return $query->getResult();
+        
+        //return $this->findAll();
     }
     
 }
