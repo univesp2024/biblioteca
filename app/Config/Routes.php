@@ -25,6 +25,11 @@ $routes->get('consultar_livro','LivroController::consultar_livro', ['as'=> 'cons
 
 $routes->get('finaliza_emprestimo/(:num)', 'LivroController::finaliza_emprestimo/$1', ['as'=> 'finaliza_emprestimo', 'filter' => 'authGuard']);
 
+$routes->get('registra_emprestimo/(:segment)/(:segment)', 'LivroController::registra_emprestimo/$1/$2', [
+    'as' => 'registra_emprestimo',
+    'filter' => 'authGuard'
+]);
+
 
 
 $routes->get('limpacookie','HomeController::limpacookie', ['filter' => 'authGuard']);

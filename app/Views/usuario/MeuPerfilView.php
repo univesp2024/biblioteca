@@ -78,37 +78,8 @@
                         id="telefone" required>
                 </div>
             </div>
-            <div class="row mb-1">
-                <div class="col-md-4  col-sm-5">
-                    <label for="e_doador" class="form-label">Você é doador?</label>
-                    <select class="form-select" name="e_doador" required>
-                        <option value="S" <?= ($dadosUsuario['e_doador'] == 'S') ? 'selected' : '' ?>>Sim</option>
-                        <option value="N" <?= ($dadosUsuario['e_doador'] == 'N') ? 'selected' : '' ?>>Não</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label for="tipo_sanguineo" class="form-label">Tipo sanguineo:</label>
-                    <select class="form-select" name="tipo_sanguineo" required>
-                        <option value="A" <?= $dadosUsuario['tipo_sanguineo'] == "A" ? 'selected' : '' ?>>A
-                        </option>
-                        <option value="B" <?= $dadosUsuario['tipo_sanguineo'] == "B" ? 'selected' : '' ?>>B
-                        </option>
-                        <option value="AB" <?= $dadosUsuario['tipo_sanguineo'] == "AB" ? 'selected' : '' ?>>AB
-                        </option>
-                        <option value="O" <?= $dadosUsuario['tipo_sanguineo'] == "O" ? 'selected' : '' ?>>O
-                        </option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label for="fator_rh" class="form-label">Fator RH:</label>
-                    <select class="form-select" name="fator_rh" required>
-                        <option value="-" <?= $dadosUsuario['fator_rh'] == "-" ? 'selected' : '' ?>>Negativo (-)
-                        </option>
-                        <option value="+" <?= $dadosUsuario['fator_rh'] == "+" ? 'selected' : '' ?>>Positivo (+)
-                        </option>
-                    </select>
-                </div>
-            </div>
+            
+     
             <div class="row mb-1">
                 <div class="col-md-7">
                     <label for="endereco" class="form-label">Endereço:</label>

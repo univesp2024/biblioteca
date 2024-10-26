@@ -3,19 +3,16 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-use CodeIgniter\I18n\Time;
 
-class EmprestimosModel extends Model
+class AlunosModel extends Model
 {
-    protected $table            = 'emprestimos';
-    protected $primaryKey       = 'id_emprestimo';
+    protected $table            = 'alunos';
+    protected $primaryKey       = 'id_aluno';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        'id_aluno', 'id_livro', 'data_emprestimo', 'data_devolucao', 'status'
-    ];
+    protected $allowedFields    = [];
 
     protected bool $allowEmptyInserts = false;
 
@@ -44,29 +41,9 @@ class EmprestimosModel extends Model
     protected $afterDelete    = [];
 
 
-    public function contarEmprestados()
+    public function dados()
     {
-        return $this->countAll();
+        return $this->findAll();
     }
-
-    public function registra_emprestimo()
-    {
-        $this->countAll();
-    }    
-
-    public function insere_emprestimo($id_livro, $id_aluno): void
-    {
-                $dataEmprestimo = Time::now();  // Data atual
-        
-                $data = [
-                    'id_aluno' => $id_aluno,
-                    'id_livro' => $id_livro,
-                    'data_emprestimo' => $dataEmprestimo->toDateTimeString(),
-                    'status' => 'pendente'
-                ];
-
-                $this->insert($data);
-    }
-
     
 }

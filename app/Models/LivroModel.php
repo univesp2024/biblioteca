@@ -7,12 +7,22 @@ use CodeIgniter\Model;
 class LivroModel extends Model
 {
     protected $table            = 'livros';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_livro';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'id_livro',
+        'titulo',
+        'autor',
+        'genero',
+        'ano_publicacao',
+        'quantidade_disponivel',
+        'estante',
+        'prateleira',
+        'data_cadastro'
+    ];
 
     protected bool $allowEmptyInserts = false;
 
@@ -60,5 +70,25 @@ class LivroModel extends Model
     {
        return $this->where('id_livro', $id_livro)->first();
     }
+
+    public function subtrairQuantidade($id_Livro)
+    {
+        $livroModel = new LivroModel();
+
+        //$livro = $livroModel->find($id_Livro);
+        $livro = $livroModel->where('id_livro', $id_Livro)->first();
+
+        
+        if ($livro && $livro['quantidade_disponivel'] > 0) {
+            $livroModel->update($id_Livro, [
+                'quantidade_disponivel' => $livro['quantidade_disponivel'] - 1
+            ]);
+            return redirect()->to('/home')->with('success', 'Quantidade atualizada com sucesso.');
+        } else {
+            return redirect()->back()->with('error', 'Não há quantidade disponível para este livro.');
+        }
+    }    
+
+
 
 }

@@ -67,34 +67,11 @@
                         maxlength="11" placeholder="(00) 00000-0000" id="telefone" value='<?= ($environment== 'development')?$telefone:'';?>' required>
                 </div>
             </div>
-            <div class="row mb-1">
-                <div class="col-md-4  col-sm-5">
-                    <label for="e_doador" class="form-label">Você é doador?</label>
-                    <select class="form-select" name="e_doador" required>
-                        <option value="">Selecione</option>
-                        <option value="S" <?= ($environment== 'development')?'selected':'';?>>Sim</option>
-                        <option value="N">Não</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label for="tipo_sanguineo" class="form-label">Tipo sanguineo:</label>
-                    <select class="form-select" name="tipo_sanguineo" required>
-                        <option value="">Selecione</option>
-                        <option value="A" <?= ($environment== 'development')? ($tipoSanguineo=='A')? 'Selected' : '' : '';?> >A</option>
-                        <option value="B" <?= ($environment== 'development')? ($tipoSanguineo=='B')? 'Selected' : '' : '';?>>B</option>
-                        <option value="AB" <?= ($environment== 'development')? ($tipoSanguineo=='AB')? 'Selected' : '' : '';?>>AB</option>
-                        <option value="O" <?= ($environment== 'development')? ($tipoSanguineo=='O')? 'Selected' : '' : '';?>>O</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label for="fator_rh" class="form-label">Fator RH:</label>
-                    <select class="form-select" name="fator_rh" required>
-                        <option value="">Selecione</option>
-                        <option value="-" <?= ($environment== 'development')? ($fatorRh=='-')? 'Selected' : '' : '';?>>Negativo (-)</option>
-                        <option value="+" <?= ($environment== 'development')? ($fatorRh=='+')? 'Selected' : '' : '';?> >Positivo (+)</option>
-                    </select>
-                </div>
-            </div>
+
+     
+
+
+
             <div class="row mb-1">
                 <div class="col-md-7">
                     <label for="endereco" class="form-label">Endereço:</label>

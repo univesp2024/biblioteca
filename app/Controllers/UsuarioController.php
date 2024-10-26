@@ -65,11 +65,7 @@ class UsuarioController extends BaseController
                 'municipio' => $this->request->getPost('municipio'),
                 'telefone' => $this->request->getPost('telefone'),
                 'email' => $this->request->getPost('email'),
-                'e_doador' => $this->request->getPost('e_doador'),
-                'tipo_sanguineo' => $this->request->getPost('tipo_sanguineo'),
-                'fator_rh' => $this->request->getPost('fator_rh'),
                 'sexo' => $this->request->getPost('sexo'),
-                'data_ultima_doacao' => $this->request->getPost('data_ultima_doacao'),
                 'senha' => password_hash($this->request->getPost('senha'), PASSWORD_DEFAULT),
                 #'senha' => $this->request->getPost('senha'),
             ];
@@ -99,11 +95,7 @@ class UsuarioController extends BaseController
             'municipio' => $this->request->getPost('municipio'),
             'telefone' => $this->request->getPost('telefone'),
             'email' => $this->request->getPost('email'),
-            'e_doador' => $this->request->getPost('e_doador'),
-            'tipo_sanguineo' => $this->request->getPost('tipo_sanguineo'),
-            'fator_rh' => $this->request->getPost('fator_rh'),
             'sexo' => $this->request->getPost('sexo'),
-            'data_ultima_doacao' => $this->request->getPost('data_ultima_doacao'),
         ];
 
         //$model->insert($data);

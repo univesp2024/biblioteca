@@ -1,7 +1,7 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Escolha o livra para emprestar</h1>
+    <h1>Escolha o livro para emprestar</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="home">Início</a></li>
@@ -71,7 +71,7 @@
         <td class="text-center">${livro.estante}</td>
         <td class="text-center">${livro.prateleira}</td>
             <td>
-              <a href="finaliza_emprestimo/${livro.id_livro}" class="btn btn-success">Emprestar</a>
+              <a href="finaliza_emprestimo/${livro.id_livro}" class="btn btn-success">Selecionar</a>
             </td>
       </tr>`;
       tbody.innerHTML += row;
@@ -132,7 +132,7 @@
         <td class="text-center">${livro.estante}</td>
         <td class="text-center">${livro.prateleira}</td>
             <td>
-              <a href="finaliza_emprestimo/${livro.id_livro}" class="btn btn-success">Emprestar</a>
+              <a href="finaliza_emprestimo/${livro.id_livro}" class="btn btn-success">Selecionar</a>
             </td>
       </tr>`;
       tbody.innerHTML += row;

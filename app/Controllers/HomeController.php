@@ -26,7 +26,7 @@ class HomeController extends BaseController
 
         $data['total_livros'] = $livroModel->contarLivros();
         $data['livros_emprestados'] = $emprestimoModel->contarEmprestados();
-        $data['livros_disponiveis'] = $data['total_livros']-$data['livros_emprestados'];
+        $data['livros_disponiveis'] = $data['total_livros'];  //-$data['livros_emprestados'];
         
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
