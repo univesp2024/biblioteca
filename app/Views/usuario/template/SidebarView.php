@@ -59,11 +59,23 @@
               <i class="bi bi-circle"></i><span>Consultar</span>
             </a>
           </li>
-
-
         </ul>
       </li>
 
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav-3" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Empréstimos</span>
+          <i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav-3" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="historico_emprestimos">
+              <i class="bi bi-circle"></i><span>Histórico</span>
+            </a>
+          </li>
+        </ul>
+      </li>      
 
 
 

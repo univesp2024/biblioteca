@@ -19,6 +19,7 @@ class LivroModel extends Model
         'genero',
         'ano_publicacao',
         'quantidade_disponivel',
+        'total_livros',
         'estante',
         'prateleira',
         'data_cadastro'
@@ -88,6 +89,21 @@ class LivroModel extends Model
             return redirect()->back()->with('error', 'Não há quantidade disponível para este livro.');
         }
     }    
+
+
+    public function atualiza_qtde($id_livro): bool
+    {
+        $builder = $this->db->table('livros');
+        $builder->where('id_livro', $id_livro);
+        
+        $data = ['quantidade_disponivel' => '1'];
+    
+        if ($builder->update($data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 

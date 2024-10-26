@@ -46,7 +46,9 @@ class EmprestimosModel extends Model
 
     public function contarEmprestados()
     {
-        return $this->countAll();
+        //return $this->countAll()->where('status','pendente');
+        return $this->where('status', 'pendente')->countAllResults();
+
     }
 
     public function registra_emprestimo()
@@ -67,6 +69,37 @@ class EmprestimosModel extends Model
 
                 $this->insert($data);
     }
+
+    public function pega_dados()
+    {
+        
+        $sql = "SELECT emprestimos.*, livros.titulo, livros.autor, alunos.*
+                FROM emprestimos as emprestimos
+                INNER JOIN livros as livros ON livros.id_livro = emprestimos.id_livro
+                INNER JOIN alunos as alunos ON alunos.id_aluno = emprestimos.id_aluno
+                WHERE emprestimos.status = 'pendente'
+                ";
+
+        $query = $this->db->query($sql);
+        return $query->getResult();
+
+    }
+
+    public function atualiza_emprestimo($id_aluno, $id_livro): bool
+    {
+        $builder = $this->db->table('emprestimos');
+        $builder->where('id_aluno', $id_aluno);
+        $builder->where('id_livro', $id_livro);
+        
+        $data = ['status' => 'devolvido', 'data_devolucao' => date('Y-m-d H:i:s')];
+    
+        if ($builder->update($data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 
     
 }

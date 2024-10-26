@@ -1,5 +1,17 @@
 <main id="main" class="main">
 
+  <?php if ($environment == 'development'): ?>
+    <div class="pagetitle">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active">
+            <i>Debug:</i> View/Livro/EmprestarView.php <i>Controller:</i> LivroController
+          </li>
+        </ol>
+      </nav>
+    </div>
+  <?php endif; ?>
+
   <div class="pagetitle">
     <h1>Escolha o livro para emprestar</h1>
     <nav>
@@ -20,7 +32,7 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>Tombo</th>
                   <th>Título</th>
                   <th>Autor</th>
                   <th>Gênero</th>
@@ -47,20 +59,25 @@
 </main>
 
 <script>
-  const dados = <?= json_encode($dados) ?>; // Converte os dados PHP para JSON em JS
-  const rowsPerPage = 10; // Quantidade de livros por página
-  let currentPage = 1;
+  const dados = <?= json_encode($dados) ?>; // Dados passados do PHP para JavaScript
+  const rowsPerPage = 5; // Número de registros por página
+  let currentPage = 1; // Página inicial
 
-  // Função para renderizar uma página específica
-  function renderTable(page = 1) {
+  // Renderiza a tabela com base na página e nos dados fornecidos
+  function renderTable(page = 1, data = dados) {
     const tbody = document.getElementById('book-table');
-    tbody.innerHTML = ''; // Limpa o conteúdo da tabela
+    tbody.innerHTML = ''; // Limpa a tabela
 
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
-    const pageData = dados.slice(start, end); // Dados da página atual
+    const pageData = data.slice(start, end); // Obtém os registros para a página atual
 
     pageData.forEach(livro => {
+      const encodedlivroId = btoa(unescape(encodeURIComponent(livro.id_livro*44787654548)));
+      const link = livro.quantidade_disponivel > 0 
+        ? `<a href="finaliza_emprestimo/${encodedlivroId}" class="btn btn-success">Selecionar</a>`
+        : `<span class="btn btn-secondary disabled">Indisponível</span>`;
+
       const row = `<tr>
         <td>${livro.id_livro}</td>
         <td>${livro.titulo}</td>
@@ -70,19 +87,18 @@
         <td class="text-center">${livro.quantidade_disponivel}</td>
         <td class="text-center">${livro.estante}</td>
         <td class="text-center">${livro.prateleira}</td>
-            <td>
-              <a href="finaliza_emprestimo/${livro.id_livro}" class="btn btn-success">Selecionar</a>
-            </td>
+        <td class="text-center">${link}</td>
       </tr>`;
+      
       tbody.innerHTML += row;
     });
 
-    renderPagination();
+    renderPagination(data); // Renderiza a paginação para os dados atuais
   }
 
-  // Função para renderizar a paginação
-  function renderPagination() {
-    const totalPages = Math.ceil(dados.length / rowsPerPage);
+  // Renderiza a paginação com base no total de páginas
+  function renderPagination(data) {
+    const totalPages = Math.ceil(data.length / rowsPerPage);
     const pagination = document.getElementById('pagination');
     pagination.innerHTML = ''; // Limpa a paginação anterior
 
@@ -93,13 +109,13 @@
       pageItem.addEventListener('click', (e) => {
         e.preventDefault();
         currentPage = i;
-        renderTable(currentPage);
+        renderTable(currentPage, data); // Renderiza a nova página
       });
       pagination.appendChild(pageItem);
     }
   }
 
-  // Função de pesquisa
+  // Função de pesquisa para filtrar os dados
   document.getElementById('search').addEventListener('input', function() {
     const searchTerm = this.value.toLowerCase();
     const filteredData = dados.filter(livro =>
@@ -108,39 +124,10 @@
       )
     );
 
-    renderFilteredTable(filteredData);
+    currentPage = 1; // Reseta para a primeira página
+    renderTable(currentPage, filteredData); // Renderiza a tabela com os dados filtrados
   });
 
-  // Renderiza a tabela filtrada
-  function renderFilteredTable(filteredData) {
-    const tbody = document.getElementById('book-table');
-    tbody.innerHTML = ''; // Limpa a tabela
-
-    const totalPages = Math.ceil(filteredData.length / rowsPerPage);
-    const start = (currentPage - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-    const pageData = filteredData.slice(start, end);
-
-    pageData.forEach(livro => {
-      const row = `<tr>
-        <td>${livro.id_livro}</td>
-        <td>${livro.titulo}</td>
-        <td>${livro.autor}</td>
-        <td>${livro.genero}</td>
-        <td class="text-center">${livro.ano_publicacao}</td>
-        <td class="text-center">${livro.quantidade_disponivel}</td>
-        <td class="text-center">${livro.estante}</td>
-        <td class="text-center">${livro.prateleira}</td>
-            <td>
-              <a href="finaliza_emprestimo/${livro.id_livro}" class="btn btn-success">Selecionar</a>
-            </td>
-      </tr>`;
-      tbody.innerHTML += row;
-    });
-
-    renderPagination(filteredData);
-  }
-
-  // Inicializa a tabela
+  // Inicializa a tabela na primeira carga
   renderTable();
 </script>

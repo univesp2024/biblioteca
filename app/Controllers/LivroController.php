@@ -31,9 +31,14 @@ class LivroController extends BaseController
 
     public function devolver_livro()
     {
+
+        $emprestimoModel = new EmprestimosModel();
+        $dados = $emprestimoModel->pega_dados();
+
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
-            'environment' => ENVIRONMENT
+            'environment' => ENVIRONMENT,
+            'dados' => $dados
         ]);
         echo view('Livro/DevolverView', [
             'environment' => ENVIRONMENT
@@ -61,6 +66,9 @@ class LivroController extends BaseController
     
     public function finaliza_emprestimo($id_livro)
     {
+
+        $id_livro = base64_decode($id_livro)/44787654548;
+
 
         $livroModel = new LivroModel();
         $alunoModel = new AlunosModel();
@@ -95,9 +103,32 @@ class LivroController extends BaseController
         
         $livroModel -> subtrairQuantidade($id_livro);
 
-        return redirect()->to('/home');
+        //return redirect()->to('/home');
+        return redirect()->to('/home')->with('success', 'Empréstimo finalizado com sucesso!');
+    }
 
+
+    public function aluno_devolver($id_livro,$id_aluno): mixed
+    {
+        $id_livro = base64_decode($id_livro)/44787654548;
+        $id_aluno = base64_decode($id_aluno)/54652154678;
+
+       
+        $emprestimoModel = new EmprestimosModel();
+        $livroModel = new LivroModel();
+
+        $resultado = $emprestimoModel->atualiza_emprestimo($id_aluno,$id_livro);
+
+        $livroModel->atualiza_qtde($id_livro);
         
+        //echo $id_aluno = base64_decode($id_aluno)/45687986546;
+        //echo $id_livro = base64_decode($id_livro)/43467323246;
+        //$emprestimoModel -> insere_emprestimo($id_livro, $id_aluno);
+        //$livroModel -> subtrairQuantidade($id_livro);
+
+        //return redirect()->to('/home');
+        return redirect()->to('/home')->with('success', 'Livro restituído com sucesso!');
+
     }
 
 

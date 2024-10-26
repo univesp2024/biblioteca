@@ -23,12 +23,19 @@ $routes->get('devolver_livro','LivroController::devolver_livro', ['as'=> 'devolv
 
 $routes->get('consultar_livro','LivroController::consultar_livro', ['as'=> 'consultar_livro', 'filter' => 'authGuard']);
 
-$routes->get('finaliza_emprestimo/(:num)', 'LivroController::finaliza_emprestimo/$1', ['as'=> 'finaliza_emprestimo', 'filter' => 'authGuard']);
+$routes->get('finaliza_emprestimo/(:segment)', 'LivroController::finaliza_emprestimo/$1', ['as'=> 'finaliza_emprestimo', 'filter' => 'authGuard']);
 
 $routes->get('registra_emprestimo/(:segment)/(:segment)', 'LivroController::registra_emprestimo/$1/$2', [
     'as' => 'registra_emprestimo',
     'filter' => 'authGuard'
 ]);
+
+$routes->get('aluno_devolver/(:segment)/(:segment)', 'LivroController::aluno_devolver/$1/$2', [
+    'as' => 'aluno_devolver',
+    'filter' => 'authGuard'
+]);
+
+
 
 
 
