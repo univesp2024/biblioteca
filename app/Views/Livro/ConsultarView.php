@@ -1,11 +1,11 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Escolha o livra para emprestar</h1>
+    <h1>Consultar livro</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="home">Início</a></li>
-        <li class="breadcrumb-item">Emprestar livro</li>
+        <li class="breadcrumb-item">Consultar livro</li>
       </ol>
     </nav>
   </div>
@@ -15,12 +15,12 @@
       <div class="col-lg-12">
         <div class="card info-card customers-card">
           <div class="card-body">
-            <h5 class="card-title">Livros <span>| Disponíveis</span></h5>
-            <input type="text" id="search" placeholder="Pesquisar livros..." class="form-control mb-3">
+            
+            <input type="text" id="search" placeholder="Pesquisar livros..." class="form-control mb-3 mt-4">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>Tombo</th>
                   <th>Título</th>
                   <th>Autor</th>
                   <th>Gênero</th>
@@ -28,7 +28,6 @@
                   <th>Disponível</th>
                   <th>Estante</th>
                   <th>Prateleira</th>
-                  <th class="text-center">Ação</th>
                 </tr>
               </thead>
               <tbody id="book-table"></tbody>
@@ -66,13 +65,10 @@
         <td>${livro.titulo}</td>
         <td>${livro.autor}</td>
         <td>${livro.genero}</td>
-        <td class="text-center">${livro.ano_publicacao}</td>
+        <td>${livro.ano_publicacao}</td>
         <td class="text-center">${livro.quantidade_disponivel}</td>
         <td class="text-center">${livro.estante}</td>
         <td class="text-center">${livro.prateleira}</td>
-            <td>
-              <a href="finaliza_emprestimo/${livro.id_livro}" class="btn btn-success">Emprestar</a>
-            </td>
       </tr>`;
       tbody.innerHTML += row;
     });
@@ -127,13 +123,10 @@
         <td>${livro.titulo}</td>
         <td>${livro.autor}</td>
         <td>${livro.genero}</td>
-        <td class="text-center">${livro.ano_publicacao}</td>
+        <td>${livro.ano_publicacao}</td>
         <td class="text-center">${livro.quantidade_disponivel}</td>
         <td class="text-center">${livro.estante}</td>
         <td class="text-center">${livro.prateleira}</td>
-            <td>
-              <a href="finaliza_emprestimo/${livro.id_livro}" class="btn btn-success">Emprestar</a>
-            </td>
       </tr>`;
       tbody.innerHTML += row;
     });

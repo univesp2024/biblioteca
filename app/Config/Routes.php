@@ -17,7 +17,14 @@ $routes->get('home','HomeController::index', ['as'=> 'home', 'filter' => 'authGu
 
 
 # ------------------------------------ [Livros] 
-$routes->get('emprestar_livro','LivroController::index', ['as'=> 'emprestar_livro', 'filter' => 'authGuard']);
+$routes->get('emprestar_livro','LivroController::emprestar_livro', ['as'=> 'emprestar_livro', 'filter' => 'authGuard']);
+
+$routes->get('devolver_livro','LivroController::devolver_livro', ['as'=> 'devolver_livro', 'filter' => 'authGuard']);
+
+$routes->get('consultar_livro','LivroController::consultar_livro', ['as'=> 'consultar_livro', 'filter' => 'authGuard']);
+
+$routes->get('finaliza_emprestimo/(:num)', 'LivroController::finaliza_emprestimo/$1', ['as'=> 'finaliza_emprestimo', 'filter' => 'authGuard']);
+
 
 
 $routes->get('limpacookie','HomeController::limpacookie', ['filter' => 'authGuard']);

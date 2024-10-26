@@ -43,7 +43,22 @@ class LivroModel extends Model
 
     public function contarLivros()
     {
-        return $this->countAll();
+        return $this->selectSum('quantidade_disponivel')->get()->getRow()->quantidade_disponivel;
+    }
+
+    public function somaQuantidadeDisponivel()
+    {
+        return $this->selectSum('quantidade_disponivel')->get()->getRow()->quantidade_disponivel;
+    }
+
+    public function dados()
+    {
+        return $this->findAll();
+    }
+
+    public function dados_by_id($id_livro)
+    {
+       return $this->where('id_livro', $id_livro)->first();
     }
 
 }
