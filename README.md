@@ -1,11 +1,7 @@
-# Sistema de doação de Sangue
-Projeto Integrador
+# Sistema de controle de biblioteca
+Projeto Integrador 2
 
 # Objetivo do projeto
-Criar uma interface amigável e acessível que permita aos usuários se cadastrarem como doadores de sangue e agendarem suas doações de forma conveniente.
-Implementar um sistema de notificação para lembrar os doadores de suas próximas doações agendadas e incentivar a regularidade nas doações.
-Facilitar a comunicação entre os doadores e os bancos de sangue, fornecendo informações sobre os horários de funcionamento, locais de doação e necessidades específicas de sangue.
-Oferecer recursos educativos sobre a importância da doação de sangue e os requisitos para ser um doador elegível.
-Permitir que os administradores dos bancos de sangue gerenciem eficientemente as doações recebidas, o estoque de sangue disponível e as campanhas de doação.
+O objetivo de um sistema para controle de biblioteca é organizar e gerenciar eficientemente o acervo e as operações relacionadas ao empréstimo, devolução e reserva de livros e outros materiais. Ele visa facilitar o acesso dos usuários às informações sobre a disponibilidade dos itens, agilizar o processo de cadastro e consulta, além de garantir um controle preciso do inventário e evitar perdas ou extravios. O sistema também busca automatizar tarefas administrativas, como o registro de prazos e multas, promovendo uma melhor gestão do tempo e dos recursos da biblioteca, enquanto oferece uma experiência mais satisfatória e prática para alunos, professores e demais usuários.
 
 
