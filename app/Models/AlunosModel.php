@@ -12,7 +12,9 @@ class AlunosModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'id_aluno','nome','email','telefone','data_nascimento','data_cadastro','status'
+    ];
 
     protected bool $allowEmptyInserts = false;
 
@@ -46,7 +48,8 @@ class AlunosModel extends Model
 
         $sql = "SELECT alunos.*, 
         CONCAT('T', LPAD(id_aluno, 4, '0')) AS id_aluno_formatado
-        FROM alunos";
+        FROM alunos
+        WHERE status='ativo'";
         $query = $this->db->query($sql);
         return $query->getResult();
         

@@ -112,10 +112,17 @@ class EmprestimosModel extends Model
                 ORDER BY emprestimos.id_emprestimo DESC
                 ";
 
-        $sql = "SELECT emprestimos.*, livros.titulo, livros.autor, 
-                CONCAT('RA', LPAD(alunos.id_aluno, 4, '0')) AS id_aluno_formatado, 
-                alunos.*, 
-                CONCAT('T', LPAD(livros.id_livro, 4, '0')) AS id_livro_formatado
+        $sql = "SELECT  emprestimos.id_emprestimo, 
+                        emprestimos.id_aluno,
+                        emprestimos.id_livro,
+                        emprestimos.data_emprestimo,
+                        emprestimos.data_devolucao,
+                        emprestimos.status as em_status,
+                        livros.titulo,
+                        livros.autor, 
+                        alunos.*, 
+                        CONCAT('RA', LPAD(alunos.id_aluno, 4, '0')) AS id_aluno_formatado, 
+                        CONCAT('T', LPAD(livros.id_livro, 4, '0')) AS id_livro_formatado
                 FROM emprestimos AS emprestimos
                 INNER JOIN livros AS livros ON livros.id_livro = emprestimos.id_livro
                 INNER JOIN alunos AS alunos ON alunos.id_aluno = emprestimos.id_aluno
@@ -125,6 +132,20 @@ class EmprestimosModel extends Model
 
         $query = $this->db->query($sql);
         return $query->getResult();
+    }
+
+    public function verifica_delete($id_aluno){
+
+        $sql = "SELECT * FROM `emprestimos` WHERE `id_aluno`=$id_aluno AND `status`= 'pendente'";
+        $query = $this->db->query($sql);
+        $result = $query->getResult();
+
+        if (!empty($result)) {
+            return true;
+        } else {
+            return false;
+        }
+      
     }
 
     

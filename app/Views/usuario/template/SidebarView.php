@@ -55,8 +55,8 @@
             </a>
           </li>
           <li>
-            <a href="consultar_aluno">
-              <i class="bi bi-circle"></i><span>Consultar</span>
+            <a href="GerenciaAluno">
+              <i class="bi bi-circle"></i><span>Gerenciar</span>
             </a>
           </li>
         </ul>

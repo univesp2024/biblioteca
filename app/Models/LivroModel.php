@@ -115,6 +115,15 @@ class LivroModel extends Model
         }
     }
 
+    public function next_idlivro(){
+
+        $query = $this->db->query("SHOW TABLE STATUS LIKE 'livros'");
+        $result = $query->getRowArray();
+
+        return 'T' . str_pad($result['Auto_increment'], 4, '0', STR_PAD_LEFT);
+
+    }
+
 
 
 }

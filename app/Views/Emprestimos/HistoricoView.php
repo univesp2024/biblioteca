@@ -1,5 +1,9 @@
 <main id="main" class="main">
 
+  <?php
+  //var_dump($dados);
+  ?>
+
   <?php if ($environment == 'development'): ?>
     <div class="pagetitle">
       <nav>
@@ -72,25 +76,33 @@
     const pageData = data.slice(start, end); // Obtém os registros para a página atual
 
     function formatarData(dataString) {
-        const data = new Date(dataString);
-        const dia = String(data.getDate()).padStart(2, '0');
-        const mes = String(data.getMonth() + 1).padStart(2, '0');
-        const ano = data.getFullYear();
-        return `${dia}/${mes}/${ano}`;
+      const data = new Date(dataString);
+      const dia = String(data.getDate()).padStart(2, '0');
+      const mes = String(data.getMonth() + 1).padStart(2, '0');
+      const ano = data.getFullYear();
+      return `${dia}/${mes}/${ano}`;
     }
 
+
+
+
     pageData.forEach(livro => {
+
+      const nomeFormatado = (livro.status === 'inativo')
+        ? `<s>${livro.nome}</s>`
+        : livro.nome;
+
       const row = `<tr>
-        <td>${livro.id_emprestimo}</td>
-        <td>${formatarData(livro.data_emprestimo)}</td>
-        <td class="text-center">${livro.id_livro_formatado}</td>
-        <td>${livro.titulo}</td>
-        <td>${livro.id_aluno_formatado}</td>
-        <td>${livro.nome}</td>
-        <td>${livro.email}</td>
-        <td>${livro.status}</td>
-      </tr>`;
-      
+                   <td>${livro.id_emprestimo}</td>
+                   <td>${formatarData(livro.data_emprestimo)}</td>
+                   <td class="text-center">${livro.id_livro_formatado}</td>
+                   <td>${livro.titulo}</td>
+                   <td>${livro.id_aluno_formatado}</td>
+                   <td>${nomeFormatado}</td>
+                   <td>${livro.email}</td>
+                   <td>${livro.em_status}</td>
+                   </tr>`;
+
       tbody.innerHTML += row;
     });
 
@@ -117,11 +129,11 @@
   }
 
   // Função de pesquisa para filtrar os dados
-  document.getElementById('search').addEventListener('input', function() {
+  document.getElementById('search').addEventListener('input', function () {
     const searchTerm = this.value.toLowerCase();
     const filteredData = dados.filter(livro =>
       Object.values(livro).some(value =>
-      (value ? value.toString().toLowerCase() : "").includes(searchTerm)
+        (value ? value.toString().toLowerCase() : "").includes(searchTerm)
       )
     );
 

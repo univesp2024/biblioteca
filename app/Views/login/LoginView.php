@@ -54,24 +54,7 @@
 			<td>a1234567</td>
 			<td>Usuário</td>
 		</tr>
-		<tr>
-			<td>222.222.222-22</td>
-			<td>a1234567</td>
-			<td>Usuário</td>
-		</tr>
-		<tr>
-			<td>333.333.333-33</td>
-			<td>a1234567</td>
-			<td>Admin</td>
-		</tr>
-        <tr>
-			<th colspan="3"><?= $MinhasFuncoesHelper->formulario() ?></th>
-		</tr>
-        <tr>
-			<th colspan="3" style="font-weight: normal;">Os e-mails dos usuários serão ignorados<br>
-                            sendo que todas as solicitações serão<br>
-                            enviados ao e-mail acima.</th>
-		</tr>                          
+                         
 	</table>
 <?php endif; ?>
 <!-- ///////////////////////////////////////////// -->

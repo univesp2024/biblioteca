@@ -134,7 +134,8 @@
           </div>
         </div>
       <?php endif; ?>
-    </div </section>
+    </div>
+   </section>
 
 
   </main>

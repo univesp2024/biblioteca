@@ -1,4 +1,19 @@
 <main id="main" class="main">
+
+<?php if ($environment == 'development'): ?>
+    <div class="pagetitle">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active">
+            <i>Debug:</i> View/Livro/ConsultarView.php 
+            <i>Controller:</i> LivroController
+          </li>
+        </ol>
+      </nav>
+    </div>
+  <?php endif; ?>
+
+
   <div class="pagetitle">
     <h1>Consultar livro</h1>
     <nav>

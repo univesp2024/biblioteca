@@ -108,6 +108,24 @@ class LivroController extends BaseController
     }
 
 
+    
+    public function cadastrar_livro(): void
+    {
+
+        $livroModel = new LivroModel();
+        $next_idlivro = $livroModel->next_idlivro();
+
+        echo view("usuario/template/HeaderView");
+        echo view("usuario/template/SidebarView", [
+            'environment' => ENVIRONMENT
+        ]);
+        echo view('Livro/CadastroLivroView', [
+            'environment' => ENVIRONMENT,
+            'next_id_livro' => $next_idlivro
+        ]);
+        echo view("usuario/template/FooterView");
+    }
+
     public function aluno_devolver($id_livro,$id_aluno): mixed
     {
         $id_livro = base64_decode($id_livro)/44787654548;
@@ -128,6 +146,50 @@ class LivroController extends BaseController
 
         //return redirect()->to('/home');
         return redirect()->to('/home')->with('success', 'Livro restituído com sucesso!');
+
+    }
+
+    
+
+    public function cadastrar_livro_post()
+    {
+        
+        /*
+        echo $id_livro = $this->request->getVar('id_livro');
+        echo $titulo = $this->request->getVar('titulo');
+        echo $autor = $this->request->getVar('autor');
+        echo $genero = $this->request->getVar('genero');
+        echo $ano_publicacao = $this->request->getVar('ano_publicacao');
+        echo $estante = $this->request->getVar('estante');
+        echo $prateleira = $this->request->getVar('prateleira');
+        */
+
+        $livroModel = new LivroModel();
+
+        $data = [
+            'titulo'         => $this->request->getVar('titulo'),
+            'autor'          => $this->request->getVar('autor'),
+            'genero'         => $this->request->getVar('genero'),
+            'ano_publicacao' => $this->request->getVar('ano_publicacao'),
+            'estante'        => $this->request->getVar('estante'),
+            'prateleira'     => $this->request->getVar('prateleira'),
+            'data_cadastro'  => date('Y-m-d H:i:s'),
+            'quantidade_disponivel' => '1'
+        ];
+
+
+        if ($livroModel->insert($data)) {
+            return redirect()->to('/home')->with('success', 'Livro cadastrado com sucesso!');
+        } else {
+            return redirect()->back()->with('error', 'Erro ao cadastrar o livro.')->withInput();
+        }
+
+
+
+
+        //return redirect()->to('/home')->with('success', 'Livro cadastrado com sucesso!');
+
+
 
     }
 

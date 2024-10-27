@@ -28,6 +28,26 @@ $routes->get('aluno_devolver/(:segment)/(:segment)', 'LivroController::aluno_dev
     'filter' => 'authGuard'
 ]);
 
+$routes->get('cadastrar_livro','LivroController::cadastrar_livro', ['as'=> 'cadastrar_livro', 'filter' => 'authGuard']);
+
+//cadastrar_livro
+$routes->post('cadastrar_livro_post','LivroController::cadastrar_livro_post');
+
+
+# ------------------------------------ [Alunos] 
+
+$routes->get('cadastrar_aluno','AlunoController::cadastrar_aluno', ['as'=> 'cadastrar_aluno', 'filter' => 'authGuard']);
+
+//cadastrar_livro
+$routes->post('cadastrar_aluno_post','AlunoController::cadastrar_aluno_post');
+
+$routes->get('GerenciaAluno','AlunoController::GerenciaAluno', ['as'=> 'GerenciaAluno', 'filter' => 'authGuard']);
+
+$routes->get('apaga_aluno/(:segment)','AlunoController::apaga_aluno/$1', ['as'=> 'apaga_aluno', 'filter' => 'authGuard']);
+
+
+
+
 
 # ------------------------------------ [Emprestimo] 
 $routes->get('finaliza_emprestimo/(:segment)', 'LivroController::finaliza_emprestimo/$1', ['as'=> 'finaliza_emprestimo', 'filter' => 'authGuard']);
