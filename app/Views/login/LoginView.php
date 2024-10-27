@@ -104,6 +104,7 @@
                         </form>
                     </div>
 
+                    <!--
                     <div class="mt-4">
                         <div class="d-flex justify-content-center links">
                             Não tem uma conta?&nbsp;<a href="cadastro" class="ml-2">Cadastre-se</a>
@@ -112,6 +113,9 @@
                             <a href="#"><strike>Esqueceu a senha?</strike></a>
                         </div>
                     </div>
+                    -->
+
+
                 </div>
             </div>
         </div>
