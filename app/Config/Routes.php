@@ -45,7 +45,9 @@ $routes->get('GerenciaAluno','AlunoController::GerenciaAluno', ['as'=> 'Gerencia
 
 $routes->get('apaga_aluno/(:segment)','AlunoController::apaga_aluno/$1', ['as'=> 'apaga_aluno', 'filter' => 'authGuard']);
 
+$routes->get('editar_aluno/(:segment)','AlunoController::editar_aluno/$1', ['as'=> 'editar_aluno', 'filter' => 'authGuard']);
 
+$routes->post('editar_aluno_post','AlunoController::editar_aluno_post');
 
 
 

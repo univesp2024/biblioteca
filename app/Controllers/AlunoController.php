@@ -93,12 +93,62 @@ class AlunoController extends BaseController
         else {
             return redirect()->to('/GerenciaAluno')->with('error', 'O Aluno possui pendência(s)<br>e não pode ser apagado!');
         }
-    
-    
+    }
+
+    public function editar_aluno($id_aluno)
+    {
+
+        $id_aluno = base64_decode($id_aluno)/532323232435568;
+
+        $alunoModel = new AlunosModel();
+        $dados = $alunoModel->dados_pelo_id($id_aluno);
+        //var_dump($dados);
+        //echo $dados->nome;
+        //die;
+
+        echo view("usuario/template/HeaderView");
+        echo view("usuario/template/SidebarView", [
+            'environment' => ENVIRONMENT
+        ]);
+        echo view('Aluno/EditarAlunoView', [
+            'environment' => ENVIRONMENT,
+            'dados' => $dados
+        ]);
+        echo view("usuario/template/FooterView");
 
     }
     
     
+
+    public function editar_aluno_post()
+    {
+
+        $alunoModel = new AlunosModel();
+ 
+        $id_aluno = $this->request->getVar('ra');
+
+        $data = [
+            'nome'             => $this->request->getVar('nome'),
+            'email'            => $this->request->getVar('email'),
+            'telefone'         => $this->request->getVar('telefone'),
+            'data_nascimento'  => $this->request->getVar('data_nascimento'),
+            'data_cadastro'    => date('Y-m-d H:i:s'),
+        ];
+
+        //var_dump($id_aluno);
+        //die;
+
+        
+         
+
+
+        if ($alunoModel->update($id_aluno, $data)) {
+            return redirect()->to('/GerenciaAluno')->with('success', 'Aluno cadastrado com sucesso!');
+        } else {
+            return redirect()->to('/GerenciaAluno')->with('error', 'Erro ao cadastrar o aluno.');
+        }
+
+    }
 
 
 }

@@ -92,6 +92,10 @@
         ? `<s>${livro.nome}</s>`
         : livro.nome;
 
+      const statusLivro = (livro.em_status === 'pendente')
+      ? `<strong style="color:red;">${livro.em_status}</strong>`
+      : livro.em_status;
+
       const row = `<tr>
                    <td>${livro.id_emprestimo}</td>
                    <td>${formatarData(livro.data_emprestimo)}</td>
@@ -100,7 +104,7 @@
                    <td>${livro.id_aluno_formatado}</td>
                    <td>${nomeFormatado}</td>
                    <td>${livro.email}</td>
-                   <td>${livro.em_status}</td>
+                   <td>${statusLivro}</td>
                    </tr>`;
 
       tbody.innerHTML += row;

@@ -52,8 +52,20 @@ class AlunosModel extends Model
         WHERE status='ativo'";
         $query = $this->db->query($sql);
         return $query->getResult();
+    }
+
+    public function dados_pelo_id($id_aluno)
+    {
+
+        $sql = "SELECT alunos.*, 
+        CONCAT('T', LPAD(id_aluno, 4, '0')) AS id_aluno_formatado
+        FROM alunos
+        WHERE status='ativo' AND id_aluno=$id_aluno";
+        $query = $this->db->query($sql);
+        //return $query->getResult();
+        return $query->getRow();
         
         //return $this->findAll();
-    }
+    }    
     
 }

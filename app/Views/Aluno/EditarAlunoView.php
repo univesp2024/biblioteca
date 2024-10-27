@@ -1,11 +1,15 @@
 <main id="main" class="main">
 
+<?php
+    //var_dump($dados);
+?>
+
 <?php if ($environment == 'development'): ?>
     <div class="pagetitle">
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">
-                    <i>Debug:</i> View/Aluno/CadastroAlunoView.php 
+                    <i>Debug:</i> View/Aluno/EditarAlunoView.php 
                     <i>Controller:</i> AlunoController
                 </li>
             </ol>
@@ -14,25 +18,33 @@
 <?php endif; ?>
 
 <div class="pagetitle">
-    <h1>Cadastrar Aluno</h1>
+    <h1>Editar Aluno</h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="home">Início</a></li>
-            <li class="breadcrumb-item">Cadastrar Aluno</li>
+            <li class="breadcrumb-item">Editar Aluno</li>
         </ol>
     </nav>
 </div>
 
 <div class="container">
-    <h4 class="text-muted">Insira as informações do aluno:</h4>
+    <h4 class="text-muted">Informações do aluno a serem editadas:</h4>
 
-    <form id="cadastroForm" action="cadastrar_aluno_post" method="post" class="needs-validation" novalidate>
+    <form id="cadastroForm" action="/editar_aluno_post" method="post" class="needs-validation" novalidate>
 
         <div class="row mb-1">
-            <div class="col">
+
+            <div class="col-md-2">
+                <label for="ra" class="form-label">RA:</label>
+                <input type="text" name="ra" class="form-control" id="ra" 
+                    value="<?= $dados->id_aluno; ?>" readonly>
+            </div>
+
+
+            <div class="col-md-10">
                 <label for="nome" class="form-label">Nome:</label>
                 <input type="text" name="nome" class="form-control" id="nome" 
-                    placeholder="Digite o nome do aluno" required>
+                    placeholder="Digite o nome do aluno" value="<?= $dados->nome; ?>" required>
             </div>
         </div>
 
@@ -40,20 +52,19 @@
             <div class="col-md-4">
                 <label for="email" class="form-label">E-mail:</label>
                 <input type="text" name="email" class="form-control" 
-                    placeholder="Digite o e-mail" required>
+                    placeholder="Digite o e-mail" value="<?= $dados->email; ?>" required>
             </div>
 
             <div class="col-md-4">
-                <label for="telefone" class="form-label">Telefone:</label>
+                <label for="genero" class="form-label">Telefone:</label>
                 <input type="text" name="telefone" class="form-control" 
-                    placeholder="Digite o telefone" required>
+                    placeholder="Digite o telefone" value="<?= $dados->telefone; ?>" required>
             </div>
-
 
             <div class="col-md-4">
                 <label for="ano_publicacao" class="form-label">Data nascimento:</label>
                 <input type="date" name="data_nascimento" class="form-control" 
-                    placeholder="Digite a data de nascimento" required>
+                    placeholder="Digite a data de nascimento" value="<?= $dados->data_nascimento; ?>" required>
             </div>
 
         </div>
@@ -64,7 +75,7 @@
 
         <div class="row">
             <div class="col text-end mt-4">
-                <input type="submit" class="btn btn-success" value="Cadastrar">
+                <input type="submit" class="btn btn-success" value="Salvar">
             </div>
         </div>
     </form>
@@ -96,9 +107,6 @@
         // Envia o formulário após a confirmação
         document.getElementById('cadastroForm').submit();
     });
-
-
-
 </script>
 
 <!-- JS Bootstrap (opcional, se não estiver carregado na página) -->
@@ -116,3 +124,4 @@
     new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
 </main>
+

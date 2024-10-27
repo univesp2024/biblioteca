@@ -184,7 +184,9 @@
         return `${dia}/${mes}/${ano}`;
     }
 
+    
     pageData.forEach(livro => {
+      const encodedAlunoId = btoa(unescape(encodeURIComponent(livro.id_aluno * 532323232435568)));
       const row = `<tr>
         <td>${livro.id_aluno_formatado}</td>
         <td>${livro.nome}</td>
@@ -193,7 +195,7 @@
         <td>${formatarData(livro.data_nascimento)}</td>
         <td>${formatarData(livro.data_cadastro)}</td>
           <td class="text-center">
-            <button class="btn btn-success" onclick="">Editar</button>
+            <button class="btn btn-success" onclick="window.location.href='editar_aluno/${encodedAlunoId}'">Editar</button>
             <button class="btn btn-danger" onclick="openModal(${livro.id_aluno})">Delete</button>
           </td>
       </tr>`;
