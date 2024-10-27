@@ -23,7 +23,8 @@ class EmprestimoController extends BaseController
 
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
-            'environment' => ENVIRONMENT
+            'environment' => ENVIRONMENT,
+            'rotaAtual' => uri_string()
         ]);
         echo view('Emprestimos/HistoricoView', [
             'environment' => ENVIRONMENT,

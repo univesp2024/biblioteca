@@ -20,7 +20,8 @@ class AlunoController extends BaseController
 
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
-            'environment' => ENVIRONMENT
+            'environment' => ENVIRONMENT,
+            'rotaAtual' => uri_string()
         ]);
         echo view('Aluno/CadastroAlunoView', [
             'environment' => ENVIRONMENT
@@ -59,7 +60,8 @@ class AlunoController extends BaseController
 
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
-            'environment' => ENVIRONMENT
+            'environment' => ENVIRONMENT,
+            'rotaAtual' => uri_string()
         ]);
         echo view('Aluno/GerenciaAlunoView', [
             'environment' => ENVIRONMENT,
@@ -108,7 +110,8 @@ class AlunoController extends BaseController
 
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
-            'environment' => ENVIRONMENT
+            'environment' => ENVIRONMENT,
+            'rotaAtual' => uri_string()
         ]);
         echo view('Aluno/EditarAlunoView', [
             'environment' => ENVIRONMENT,

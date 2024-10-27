@@ -3,6 +3,7 @@
   #var_dump($dados); 
   #die();
   # echo count($doacoes[0]);
+    //$rotaAtual = uri_string();
   ?>
 
   <!-- Mostrando o caminho do arquivo apenas quando em desenvolvimento -->

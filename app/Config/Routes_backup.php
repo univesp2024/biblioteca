@@ -33,13 +33,6 @@ $routes->get('cadastrar_livro','LivroController::cadastrar_livro', ['as'=> 'cada
 //cadastrar_livro
 $routes->post('cadastrar_livro_post','LivroController::cadastrar_livro_post');
 
-# ------------------------------------ [Consultar Livros Público] 
-$routes->get(
-    'consulta_publica_livro',
-    'LivroController::consulta_publica_livro', 
-    ['as'=> 'consulta_publica_livro'
-]);
-
 
 # ------------------------------------ [Alunos] 
 
@@ -79,11 +72,11 @@ $routes->get(
 
 
 
-// $routes->get('limpacookie','HomeController::limpacookie', ['filter' => 'authGuard']);
+$routes->get('limpacookie','HomeController::limpacookie', ['filter' => 'authGuard']);
 
 
 # ------------------------------------ [Dashboard] 
-//$routes->get('dashboard','DashboardController::index', ['as'=> 'dashboard', 'filter' => 'authGuard']);
+$routes->get('dashboard','DashboardController::index', ['as'=> 'dashboard', 'filter' => 'authGuard']);
 
 
 # ------------------------------------ [Usuario] 
@@ -99,3 +92,36 @@ $routes->get('adminMeuPerfil','UsuarioController::adminMeuPerfil', ['as'=> 'admi
 
 $routes->get('alterarsenha','UsuarioController::alterarsenha', ['as'=> 'alterarsenha', 'filter' => 'authGuard']);
 
+
+# ------------------------------------ [Solicitacao] 
+$routes->get('listasolicitacao',
+             'SolicitacaoController::index', 
+             ['filter' => 'authGuard']
+);
+
+$routes->get('solicitadoacao',
+             'SolicitacaoController::solicitadoacao', 
+             ['filter' => 'authGuard']
+);
+
+$routes->post('inseresolicitadoacao',
+              'SolicitacaoController::inseresolicitadoacao', 
+              ['filter' => 'authGuard']
+);
+
+
+# ------------------------------------ [Doação] 
+$routes->get('minhasdoacoes',
+             'DoacaoController::minhasdoacoes', 
+             ['filter' => 'authGuard']
+);
+
+$routes->get('inserirdoacao',
+             'DoacaoController::inserirdoacao', 
+             ['filter' => 'authGuard']
+);
+
+$routes->post('inserirdoacaopost',
+              'DoacaoController::inserirdoacaopost', 
+              ['filter' => 'authGuard']
+);

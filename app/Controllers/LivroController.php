@@ -18,7 +18,8 @@ class LivroController extends BaseController
 
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
-            'environment' => ENVIRONMENT
+            'environment' => ENVIRONMENT,
+            'rotaAtual' => uri_string()
         ]);
         echo view('Livro/EmprestarView', [
             'environment' => ENVIRONMENT,
@@ -38,7 +39,8 @@ class LivroController extends BaseController
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
             'environment' => ENVIRONMENT,
-            'dados' => $dados
+            'dados' => $dados,
+            'rotaAtual' => uri_string()
         ]);
         echo view('Livro/DevolverView', [
             'environment' => ENVIRONMENT
@@ -54,7 +56,8 @@ class LivroController extends BaseController
 
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
-            'environment' => ENVIRONMENT
+            'environment' => ENVIRONMENT,
+            'rotaAtual' => uri_string()
         ]);
         echo view('Livro/ConsultarView', [
             'environment' => ENVIRONMENT,
@@ -78,7 +81,8 @@ class LivroController extends BaseController
 
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
-            'environment' => ENVIRONMENT
+            'environment' => ENVIRONMENT,
+            'rotaAtual' => uri_string()
         ]);
         echo view('Livro/FinalizaEmprestimoView', [
             'environment' => ENVIRONMENT,
@@ -117,7 +121,8 @@ class LivroController extends BaseController
 
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
-            'environment' => ENVIRONMENT
+            'environment' => ENVIRONMENT,
+            'rotaAtual' => uri_string()
         ]);
         echo view('Livro/CadastroLivroView', [
             'environment' => ENVIRONMENT,
@@ -192,6 +197,20 @@ class LivroController extends BaseController
 
 
     }
+
+    public function consulta_publica_livro()
+    {
+
+        $livroModel = new LivroModel();
+        $dados = $livroModel->dados();
+
+
+        echo view('publico/PublicoConsultarView', [
+            'environment' => ENVIRONMENT,
+            'dados' => $dados
+        ]);
+
+    }       
 
 
 

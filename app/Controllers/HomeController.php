@@ -13,6 +13,7 @@ class HomeController extends BaseController
     public function index()
     {
 
+
         if (session()->get('status') == 99)
         {
             return redirect()->to('dashboard');
@@ -31,7 +32,8 @@ class HomeController extends BaseController
         echo view("usuario/template/HeaderView");
         echo view("usuario/template/SidebarView", [
             'environment' => ENVIRONMENT, 
-            'hasData' => ''
+            'hasData' => '',
+            'rotaAtual' => uri_string()
         ]);
         
         echo view("usuario/MainView", [
