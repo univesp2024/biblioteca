@@ -8,7 +8,11 @@ use CodeIgniter\Router\RouteCollection;
 # $routes->setAutoRoute(true);
 
 # ------------------------------------ [Login] 
-$routes->get('/', 'LoginController::index', ['as'=> 'login']);
+//$routes->get('/', 'LoginController::index', ['as'=> 'login']);
+
+$routes->get('/', 'LivroController::index', ['as'=> 'login']);
+
+$routes->get('administrar', 'LoginController::index', ['as'=> 'administrar']);
 $routes->post('autenticar','LoginController::autenticar');
 $routes->get('logout','LoginController::logout', ['as'=> 'logout']);
 

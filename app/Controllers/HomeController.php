@@ -37,12 +37,7 @@ class HomeController extends BaseController
         ]);
         
         echo view("usuario/MainView", [
-            'doacoes' => '$doacoes',
-            'qtdeDoacaoRealizada' => '100',
-            'qtdeSolicitacaoRealizada' => '10',
-            'qtdeTotalDoado' => 'info',
-            'dataultimaDoacao' => '$dataultimaDoacao',
-            'dataultimasolicitacao' => '$dataultimasolicitacao',
+
             'emailcookie' => $emailcookie,
             'total_livros' => $data['livros_disponiveis'],
             'livros_emprestados' => $data['livros_emprestados']

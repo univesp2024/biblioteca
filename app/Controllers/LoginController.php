@@ -22,6 +22,8 @@ class LoginController extends BaseController
     
 
     
+
+    
     public function restrito(){
         var_dump("Admin only");
     }

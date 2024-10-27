@@ -198,7 +198,7 @@ class LivroController extends BaseController
 
     }
 
-    public function consulta_publica_livro()
+    public function index()
     {
 
         $livroModel = new LivroModel();

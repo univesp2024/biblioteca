@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Sistema de doação de sangue</title>
+  <title>Sistema de controle da Biblioteca</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -20,7 +20,6 @@
   <link href="/assets/css/publico.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
-
   <style>
     .alert {
       z-index: 9999;
@@ -30,14 +29,45 @@
       transform: translateX(-50%);
       width: 70%;
     }
-  </style>
 
+    .navbar {
+      background-color: #3498db;
+    }
+
+    .navbar-brand, .nav-link {
+      color: white !important;
+    }
+
+    .nav-link:hover {
+      color: #2980b9 !important;
+    }
+  </style>
 </head>
 
 <body>
 
-<main id="main"  class="main container-custom">
+<!-- Navbar Header -->
+<header>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/home">Sistema de Controle da Biblioteca</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
 
+          <li class="nav-item">
+            <a class="nav-link" href="/administrar">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main" class="main container-custom">
   <?php if ($environment == 'development'): ?>
       <div class="debug-text">
         <nav>
@@ -51,9 +81,8 @@
       </div>
   <?php endif; ?>
 
-
   <div class="pagetitle">
-    <h1>Consultar livro</h1>
+    <h1>Consultar Livro</h1>
   </div>
 
   <section class="section dashboard">
@@ -78,7 +107,6 @@
               <tbody id="book-table"></tbody>
             </table>
 
-            <!-- Controles de Paginação -->
             <nav>
               <ul class="pagination justify-content-center" id="pagination"></ul>
             </nav>
@@ -90,24 +118,21 @@
 </main>
 
 <script>
-  const dados = <?= json_encode($dados) ?>; // Converte os dados PHP para JSON em JS
-  const rowsPerPage = 5; // Quantidade de livros por página
+  const dados = <?= json_encode($dados) ?>;
+  const rowsPerPage = 5;
   let currentPage = 1;
-  let filteredData = [...dados]; // Inicialmente contém todos os dados
+  let filteredData = [...dados];
 
-  // Função para renderizar uma página específica
   function renderTable(page = 1) {
     const tbody = document.getElementById('book-table');
-    tbody.innerHTML = ''; // Limpa o conteúdo da tabela
+    tbody.innerHTML = '';
 
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
-    const pageData = filteredData.slice(start, end); // Dados da página atual
+    const pageData = filteredData.slice(start, end);
 
     pageData.forEach(livro => {
-      
-      const disponibilidade = (livro.quantidade_disponivel == 0)? "Indisponível": "Disponível";
-
+      const disponibilidade = (livro.quantidade_disponivel == 0) ? "Indisponível" : "Disponível";
 
       const row = `<tr>
         <td>${livro.id_livro_formatado}</td>
@@ -117,7 +142,7 @@
         <td>${livro.ano_publicacao}</td>
         <td class="text-center">${livro.estante}</td>
         <td class="text-center">${livro.prateleira}</td>
-        <td class="text-center">${disponibilidade}</td>        
+        <td class="text-center">${disponibilidade}</td>
       </tr>`;
       tbody.innerHTML += row;
     });
@@ -125,11 +150,10 @@
     renderPagination();
   }
 
-  // Função para renderizar a paginação
   function renderPagination() {
-    const totalPages = Math.max(Math.ceil(filteredData.length / rowsPerPage), 1); // No mínimo 1 página
+    const totalPages = Math.max(Math.ceil(filteredData.length / rowsPerPage), 1);
     const pagination = document.getElementById('pagination');
-    pagination.innerHTML = ''; // Limpa a paginação anterior
+    pagination.innerHTML = '';
 
     for (let i = 1; i <= totalPages; i++) {
       const pageItem = document.createElement('li');
@@ -144,7 +168,6 @@
     }
   }
 
-  // Função de pesquisa
   document.getElementById('search').addEventListener('input', function () {
     const searchTerm = this.value.toLowerCase();
     filteredData = dados.filter(livro =>
@@ -152,48 +175,25 @@
         value.toString().toLowerCase().includes(searchTerm)
       )
     );
-
-    currentPage = 1; // Reseta para a primeira página ao pesquisar
+    currentPage = 1;
     renderTable(currentPage);
   });
 
-  // Inicializa a tabela
   renderTable();
 </script>
 
- 
 <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>2024</span></strong>. Todos os direitos reservados
-    </div>
-    <div class="credits">
-      Projeto Integrador - Univesp 2024
-    </div>
-  </footer><!-- End Footer -->
-
-  <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
+  <div class="copyright">
+    &copy; Copyright <strong><span>2024</span></strong>. Todos os direitos reservados
   </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
+  <div class="credits">
+    Projeto Integrador - Univesp 2024
+  </div>
+</footer>
 
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Vendor JS Files -->
-  <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
-  
-
-  <!-- Template Main JS File -->
-  <script src="/assets/js/main.js"></script>
-
- 
 </body>
-
 </html>
