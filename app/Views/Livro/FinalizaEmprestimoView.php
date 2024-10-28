@@ -30,7 +30,7 @@
           <h6>Livro escolhido</h6>
         </div>
         <div class="card-body">
-          <h6 class="mt-2"><strong>Tombo:</strong> <?= $dados['id_livro'] ?> - 
+          <h6 class="mt-2"><strong>Tombo:</strong> <?= 'T' . str_pad($dados['id_livro'], 4, '0', STR_PAD_LEFT); ?> - 
           <strong>Título:</strong> <?= $dados['titulo'] ?> - 
           <strong>Autor:</strong> <?= $dados['autor'] ?></h6>
         </div>

@@ -47,7 +47,7 @@ class AlunosModel extends Model
     {
 
         $sql = "SELECT alunos.*, 
-        CONCAT('T', LPAD(id_aluno, 4, '0')) AS id_aluno_formatado
+        CONCAT('RA', LPAD(id_aluno, 4, '0')) AS id_aluno_formatado
         FROM alunos
         WHERE status='ativo'";
         $query = $this->db->query($sql);
