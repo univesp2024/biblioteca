@@ -101,6 +101,7 @@ class AlunoController extends BaseController
     {
 
         $id_aluno = base64_decode($id_aluno)/532323232435568;
+        
 
         $alunoModel = new AlunosModel();
         $dados = $alunoModel->dados_pelo_id($id_aluno);
@@ -141,14 +142,10 @@ class AlunoController extends BaseController
         //var_dump($id_aluno);
         //die;
 
-        
-         
-
-
         if ($alunoModel->update($id_aluno, $data)) {
-            return redirect()->to('/GerenciaAluno')->with('success', 'Aluno cadastrado com sucesso!');
+            return redirect()->to('/GerenciaAluno')->with('success', 'Aluno editado com sucesso!');
         } else {
-            return redirect()->to('/GerenciaAluno')->with('error', 'Erro ao cadastrar o aluno.');
+            return redirect()->to('/GerenciaAluno')->with('error', 'Erro ao editar o aluno.');
         }
 
     }

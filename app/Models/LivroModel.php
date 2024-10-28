@@ -22,7 +22,8 @@ class LivroModel extends Model
         'total_livros',
         'estante',
         'prateleira',
-        'data_cadastro'
+        'data_cadastro',
+        'status'
     ];
 
     protected bool $allowEmptyInserts = false;
@@ -67,7 +68,8 @@ class LivroModel extends Model
 
         $sql = "SELECT livros.*, 
                 CONCAT('T', LPAD(id_livro, 4, '0')) AS id_livro_formatado
-                FROM livros";
+                FROM livros
+                WHERE status='ativo'";
         $query = $this->db->query($sql);
         return $query->getResult();
         //return $query->getResult();
@@ -123,6 +125,24 @@ class LivroModel extends Model
         return 'T' . str_pad($result['Auto_increment'], 4, '0', STR_PAD_LEFT);
 
     }
+
+
+    public function livro_dados_pelo_id($id_livro)
+    {
+
+        $sql = "SELECT livros.*, 
+        CONCAT('T', LPAD(id_livro, 4, '0')) AS id_livro_formatado
+        FROM livros
+        WHERE status='ativo' AND id_livro=$id_livro";
+        $query = $this->db->query($sql);
+        //return $query->getResult();
+        return $query->getRow();
+        
+        //return $this->findAll();
+    }  
+
+
+  
 
 
 

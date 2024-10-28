@@ -13,6 +13,9 @@
     </div>
 <?php endif; ?>
 
+
+
+
 <div class="pagetitle">
     <h1>Cadastrar Aluno</h1>
     <nav>
@@ -23,11 +26,14 @@
     </nav>
 </div>
 
-<div class="container">
-    <h4 class="text-muted">Insira as informações do aluno:</h4>
 
+<section class="section dashboard">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card info-card customers-card">
+        <div class="container">
+    <h4 class="text-muted mt-3">Insira as informações do aluno:</h4>
     <form id="cadastroForm" action="cadastrar_aluno_post" method="post" class="needs-validation" novalidate>
-
         <div class="row mb-1">
             <div class="col">
                 <label for="nome" class="form-label">Nome:</label>
@@ -35,40 +41,38 @@
                     placeholder="Digite o nome do aluno" required>
             </div>
         </div>
-
         <div class="row mt-2">
             <div class="col-md-4">
                 <label for="email" class="form-label">E-mail:</label>
                 <input type="text" name="email" class="form-control" 
                     placeholder="Digite o e-mail" required>
             </div>
-
             <div class="col-md-4">
                 <label for="telefone" class="form-label">Telefone:</label>
                 <input type="text" name="telefone" class="form-control" 
                     placeholder="Digite o telefone" required>
             </div>
-
-
             <div class="col-md-4">
                 <label for="ano_publicacao" class="form-label">Data nascimento:</label>
                 <input type="date" name="data_nascimento" class="form-control" 
                     placeholder="Digite a data de nascimento" required>
             </div>
-
         </div>
-
         <div class="row mt-2">
-
         </div>
-
         <div class="row">
             <div class="col text-end mt-4">
                 <input type="submit" class="btn btn-success" value="Cadastrar">
             </div>
         </div>
     </form>
-</div>
+</div>            
+        </div>
+      </div>
+    </div>
+</section>
+
+
 
 <!-- Modal de Confirmação -->
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">

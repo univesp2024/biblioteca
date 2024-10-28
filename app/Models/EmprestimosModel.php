@@ -105,12 +105,6 @@ class EmprestimosModel extends Model
 
     public function dados_historico_emprestimos(): array
     {
-        $sql = "SELECT emprestimos.*, livros.titulo, livros.autor, alunos.*
-                FROM emprestimos as emprestimos
-                INNER JOIN livros as livros ON livros.id_livro = emprestimos.id_livro
-                INNER JOIN alunos as alunos ON alunos.id_aluno = emprestimos.id_aluno
-                ORDER BY emprestimos.id_emprestimo DESC
-                ";
 
         $sql = "SELECT  emprestimos.id_emprestimo, 
                         emprestimos.id_aluno,
@@ -120,6 +114,7 @@ class EmprestimosModel extends Model
                         emprestimos.status as em_status,
                         livros.titulo,
                         livros.autor, 
+                        livros.status as li_status,
                         alunos.*, 
                         CONCAT('RA', LPAD(alunos.id_aluno, 4, '0')) AS id_aluno_formatado, 
                         CONCAT('T', LPAD(livros.id_livro, 4, '0')) AS id_livro_formatado
@@ -141,6 +136,21 @@ class EmprestimosModel extends Model
         $result = $query->getResult();
 
         if (!empty($result)) {
+            return true;
+        } else {
+            return false;
+        }
+      
+    }
+
+    public function verifica_delete_livro($id_livro){
+
+        $sql = "SELECT * FROM `emprestimos` WHERE `id_livro`=$id_livro AND `status`= 'pendente'";
+        $query = $this->db->query($sql);
+        $result = $query->getResult();
+        //var_dump($result);
+
+        if (empty($result)) {
             return true;
         } else {
             return false;

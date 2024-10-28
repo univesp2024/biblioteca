@@ -37,6 +37,17 @@ $routes->get('cadastrar_livro','LivroController::cadastrar_livro', ['as'=> 'cada
 //cadastrar_livro
 $routes->post('cadastrar_livro_post','LivroController::cadastrar_livro_post');
 
+
+$routes->get('gerencia_livro','LivroController::gerencia_livro', ['as'=> 'gerencia_livro', 'filter' => 'authGuard']);
+
+$routes->get('editar_livro/(:segment)','LivroController::editar_livro/$1', ['as'=> 'editar_livro', 'filter' => 'authGuard']);
+
+$routes->post('editar_livro_post','LivroController::editar_livro_post');
+
+$routes->get('apaga_livro/(:segment)','LivroController::apaga_livro/$1', ['as'=> 'apaga_livro', 'filter' => 'authGuard']);
+
+
+
 # ------------------------------------ [Consultar Livros Público] 
 $routes->get(
     'consulta_publica_livro',

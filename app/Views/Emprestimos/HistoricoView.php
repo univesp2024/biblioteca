@@ -1,7 +1,7 @@
 <main id="main" class="main">
 
   <?php
-  //var_dump($dados);
+    // var_dump($dados);
   ?>
 
   <?php if ($environment == 'development'): ?>
@@ -92,6 +92,10 @@
         ? `<s>${livro.nome}</s>`
         : livro.nome;
 
+        const tituloFormatado = (livro.li_status === 'inativo')
+        ? `<s>${livro.titulo}</s>`
+        : livro.titulo;        
+        
       const statusLivro = (livro.em_status === 'pendente')
       ? `<strong style="color:red;">${livro.em_status}</strong>`
       : livro.em_status;
@@ -100,7 +104,7 @@
                    <td>${livro.id_emprestimo}</td>
                    <td>${formatarData(livro.data_emprestimo)}</td>
                    <td class="text-center">${livro.id_livro_formatado}</td>
-                   <td>${livro.titulo}</td>
+                   <td>${tituloFormatado}</td>
                    <td>${livro.id_aluno_formatado}</td>
                    <td>${nomeFormatado}</td>
                    <td>${livro.email}</td>

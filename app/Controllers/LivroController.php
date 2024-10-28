@@ -212,6 +212,105 @@ class LivroController extends BaseController
 
     }       
 
+    
+    public function gerencia_livro(){
+
+        $livroModel = new LivroModel();
+        $dados = $livroModel->dados();
+
+        echo view("usuario/template/HeaderView");
+        echo view("usuario/template/SidebarView", [
+            'environment' => ENVIRONMENT,
+            'rotaAtual' => uri_string()
+        ]);
+        echo view('Livro/GerenciaLivroView', [
+            'environment' => ENVIRONMENT,
+            'dados' => $dados
+        ]);
+        echo view("usuario/template/FooterView");
+    }
+
+
+    
+    public function editar_livro($id_livro)
+    {
+
+        $id_livro = base64_decode($id_livro)/3329879632876;
+        
+        $livroModel = new LivroModel();
+        $dados = $livroModel->livro_dados_pelo_id($id_livro);
+        //var_dump($dados);
+        //echo $dados->nome;
+        //die;
+
+        echo view("usuario/template/HeaderView");
+        echo view("usuario/template/SidebarView", [
+            'environment' => ENVIRONMENT,
+            'rotaAtual' => uri_string()
+        ]);
+        echo view('Livro/EditarLivroView', [
+            'environment' => ENVIRONMENT,
+            'dados' => $dados
+        ]);
+        echo view("usuario/template/FooterView");
+
+    }
+
+    
+    public function editar_livro_post()
+    {
+
+        $livroModel = new LivroModel();
+        $id_livro = $this->request->getVar('id_livro');
+
+        $data = [
+            'titulo'          => $this->request->getVar('titulo'),
+            'autor'           => $this->request->getVar('autor'),
+            'genero'          => $this->request->getVar('genero'),
+            'ano_publicacao'  => $this->request->getVar('ano_publicacao'),
+            'estante'         => $this->request->getVar('estante'),
+            'prateleira'      => $this->request->getVar('prateleira'),
+        ];
+
+        //var_dump($data);
+        //die;
+
+        if ($livroModel->update(['id_livro' => $id_livro], $data)) {
+            return redirect()->to('/gerencia_livro')->with('success', 'Livro editado com sucesso!');
+        } else {
+            return redirect()->to('/gerencia_livro')->with('error', 'Erro ao editar o livro.');
+        }
+
+    }
+
+
+    public function apaga_livro($id_livro)
+    {
+
+        $livroModel = new LivroModel();
+        $emprestimosModel = new EmprestimosModel();
+
+        $id_livro = base64_decode($id_livro) / 54655345764678;        
+
+        $pode_apagar=$emprestimosModel->verifica_delete_livro($id_livro);
+
+        if ($pode_apagar){
+            $livro = $livroModel->where('id_livro', $id_livro)->first();
+            if ($livro) {
+                $data = ['status' => 'inativo'];
+        
+                $livroModel->set($data)->where('id_livro', $id_livro)->update();
+        
+                return redirect()->to('/gerencia_livro')->with('success', 'Livro apagado com sucesso!');
+            } else {
+                return redirect()->to('/gerencia_livro')->with('error', 'Livro não encontrado!');
+            }
+        }
+        else {
+            return redirect()->to('/gerencia_livro')->with('error', 'O livro possui pendência(s)<br>e não pode ser apagado!');
+        }
+    }       
+
 
 
 }

@@ -19,6 +19,8 @@ class EmprestimoController extends BaseController
         
         $dadosModel = new EmprestimosModel();
         $dados = $dadosModel->dados_historico_emprestimos();
+        //var_dump($dados);
+        //die;
         
 
         echo view("usuario/template/HeaderView");
