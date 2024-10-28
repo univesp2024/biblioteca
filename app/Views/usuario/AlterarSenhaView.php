@@ -10,20 +10,39 @@
         </nav>
     </div>
 
-    <div class="container">
-        <h4 class="text-muted">Mudar Senha:</h4>
+    <!-- Mostrando o caminho do arquivo apenas quando em desenvolvimento -->
+    <?php if ($environment == 'development'): ?>
+        <div class="pagetitle">
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active">Debug: View/Usuario/AlterarSenhaView.php Controller: UsuarioController
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    <?php endif; ?>
+    <!-- Fim do debug -->    
+
+
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card info-card customers-card">
+
+                <div class="container">
+        <h4 class="text-muted mt-3">Mudar Senha:</h4>
         <form action="update_senha" class="needs-validation" method="post" id="formulario" novalidate>
             <div class="row mb-3">
                 <div class="col">
                     <label for="velhaSenha" class="form-label">Digite a sua senha atual:</label>
-                    <input type="password" name="velhaSenha" class="form-control" placeholder="Digite a sua senha atual"
+                    <input type="password" name="velhaSenha" class="form-control" placeholder=""
                         minlength="8" required>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
                     <label for="novaSenha" class="form-label">Digite a sua nova senha:</label>
-                    <input type="password" name="novaSenha" class="form-control" placeholder="Digite a sua nova senha"
+                    <input type="password" name="novaSenha" class="form-control" placeholder=""
                         minlength="8" required id="novaSenha">
                 </div>
             </div>
@@ -31,7 +50,7 @@
                 <div class="col">
                     <label for="confirmarSenha" class="form-label">Confirme a sua nova senha:</label>
                     <input type="password" name="confirmarSenha" class="form-control"
-                        placeholder="Digite a sua nova senha" minlength="8" required id="confirmarSenha">
+                        placeholder="" minlength="8" required id="confirmarSenha">
                 </div>
             </div>
             <div class="row mt-2">
@@ -41,6 +60,19 @@
             </div>
         </form>
     </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
 
     <script>
         const novaSenha = document.getElementById("novaSenha");
