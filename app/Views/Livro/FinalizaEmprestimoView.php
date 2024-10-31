@@ -17,7 +17,7 @@
     <h1>Finalizar Empréstimo</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/home">Início</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('/home')?>">Início</a></li>
         <li class="breadcrumb-item">Finalizar empréstimo</li>
       </ol>
     </nav>
@@ -144,7 +144,7 @@
   document.getElementById('confirmButton').addEventListener('click', function () {
     if (selectedAlunoId !== null) {
       const encodedAlunoId = btoa(unescape(encodeURIComponent(selectedAlunoId * 45687986546)));
-      window.location.href = `/registra_emprestimo/<?= base64_encode($dados['id_livro'] * 43467323246) ?>/${encodedAlunoId}`;
+      window.location.href = `<?= base_url('/registra_emprestimo')?>/<?= base64_encode($dados['id_livro'] * 43467323246) ?>/${encodedAlunoId}`;
     }
   });
 

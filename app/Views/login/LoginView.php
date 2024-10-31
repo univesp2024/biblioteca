@@ -11,7 +11,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!-- Estilo customizado -->
-    <link rel="stylesheet" href="/assets.old/css/signin.css">
+    <link rel="stylesheet" href="<?= base_url('/assets.old/css/signin.css')?>">
 
     <title>Sistema de doação de sangue</title>
 </head>
@@ -75,7 +75,7 @@
                 <div class="user_card">
                     <div class="d-flex justify-content-center">
                         <div class="brand_logo_container">
-                            <img src="/assets/img/logo.PNG"
+                            <img src="<?= base_url('/assets/img/logo.PNG')?>"
                                 class="brand_logo" alt="Logo">
                         </div>
                     </div>
@@ -129,7 +129,7 @@
             integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
             crossorigin="anonymous"></script>
         <!-- JS -->
-        <script src="/assets/js/login.js"></script>
+        <script src="<?= base_url('/assets/js/login.js')?>"></script>
 
         <div vw class="enabled">
             <div vw-access-button class="active"></div>

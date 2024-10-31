@@ -18,7 +18,7 @@
     <h1>Consultar livro</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="home">Início</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('home')?>">Início</a></li>
         <li class="breadcrumb-item">Consultar livro</li>
       </ol>
     </nav>

@@ -69,7 +69,7 @@
     <h1>Página inicial</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="home">Início</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('home')?>">Início</a></li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -94,7 +94,7 @@
                   </div>
                 </div>
               </div>
-              <a href="emprestar_livro" class="btn btn-success mt-3 ms-3 me-3">
+              <a href="<?= base_url('emprestar_livro')?>" class="btn btn-success mt-3 ms-3 me-3">
                 <i class="bi bi-arrow-up-circle me-2"></i>Emprestar livro
               </a>
             </div>
@@ -115,7 +115,7 @@
                 </div>
               </div>
               
-              <a href="devolver_livro" class="btn btn-success mt-3 ms-3 me-3">
+              <a href="<?= base_url('devolver_livro')?>" class="btn btn-success mt-3 ms-3 me-3">
                 <i class="bi bi-arrow-down-circle me-2"></i>Devolver livro
               </a>
             </div>

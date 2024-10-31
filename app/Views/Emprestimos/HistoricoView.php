@@ -20,7 +20,7 @@
     <h1>Histórico de empréstimo de livros</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="home">Início</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('home')?>">Início</a></li>
         <li class="breadcrumb-item">Histórico Empréstimos</li>
       </ol>
     </nav>

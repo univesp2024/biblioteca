@@ -21,7 +21,7 @@
     <h1>Editar Livro</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="home">Início</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('home')?>">Início</a></li>
             <li class="breadcrumb-item">Editar Livro</li>
         </ol>
     </nav>
@@ -30,7 +30,7 @@
 <div class="container">
     <h4 class="text-muted">Insira as informações do livro:</h4>
 
-    <form id="cadastroForm" action="/editar_livro_post" method="post" class="needs-validation" novalidate>
+    <form id="cadastroForm" action="<?= base_url('editar_livro_post'); ?>" method="post" class="needs-validation" novalidate>
         <div class="row mb-1">
             <div class="col-md-2">
                 <label for="tombo" class="form-label">Tombo:</label>

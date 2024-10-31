@@ -16,7 +16,7 @@
     <h1>Escolha o livro para emprestar</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="home">Início</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('home')?>">Início</a></li>
         <li class="breadcrumb-item">Emprestar livro</li>
       </ol>
     </nav>
@@ -75,7 +75,7 @@
     pageData.forEach(livro => {
       const encodedlivroId = btoa(unescape(encodeURIComponent(livro.id_livro*44787654548)));
       const link = livro.quantidade_disponivel > 0 
-        ? `<a href="finaliza_emprestimo/${encodedlivroId}" class="btn btn-success">Selecionar</a>`
+        ? `<a href="<?= base_url('finaliza_emprestimo')?>/${encodedlivroId}" class="btn btn-success">Selecionar</a>`
         : `<span class="btn btn-secondary disabled">Indisponível</span>`;
 
       const row = `<tr>

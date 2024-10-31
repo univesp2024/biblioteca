@@ -7,7 +7,7 @@ $rotaAtual = uri_string();
 
 
     <li class="nav-item">
-      <a class="nav-link <? $rotaAtual == 'home' ? '' : 'collapsed' ?>" href="/home">
+      <a class="nav-link <? $rotaAtual == 'home' ? '' : 'collapsed' ?>" href="<?= base_url('home')?>">
         <i class="bi bi-grid"></i><span>Início</span>
       </a>
     </li>
@@ -22,21 +22,21 @@ $rotaAtual = uri_string();
         class="nav-content collapse <?= in_array($rotaAtual, ['cadastrar_livro', 'consultar_livro', 'emprestar_livro', 'devolver_livro', 'gerencia_livro']) ? 'show' : '' ?>"
         data-bs-parent="#sidebar-nav">
 
-        <li><a href="/cadastrar_livro" class="<?= $rotaAtual == 'cadastrar_livro' ? 'active' : '' ?>">
+        <li><a href="<?= base_url('cadastrar_livro')?>" class="<?= $rotaAtual == 'cadastrar_livro' ? 'active' : '' ?>">
             <i class="bi bi-circle"></i><span>Cadastrar Livro</span></a>
         </li>
 
-        <li><a href="/consultar_livro" class="<?= $rotaAtual == 'consultar_livro' ? 'active' : '' ?>">
+        <li><a href="<?= base_url('consultar_livro')?>" class="<?= $rotaAtual == 'consultar_livro' ? 'active' : '' ?>">
             <i class="bi bi-circle"></i><span>Consultar</span></a>
         </li>
 
-        <li><a href="/emprestar_livro" class="<?= $rotaAtual == 'emprestar_livro' ? 'active' : '' ?>">
+        <li><a href="<?= base_url('emprestar_livro')?>" class="<?= $rotaAtual == 'emprestar_livro' ? 'active' : '' ?>">
             <i class="bi bi-circle"></i><span>Emprestar</span></a>
         </li>
-        <li><a href="/devolver_livro" class="<?= $rotaAtual == 'devolver_livro' ? 'active' : '' ?>">
+        <li><a href="<?= base_url('devolver_livro')?>" class="<?= $rotaAtual == 'devolver_livro' ? 'active' : '' ?>">
             <i class="bi bi-circle"></i><span>Devolver</span></a>
         </li>
-        <li><a href="/gerencia_livro" class="<?= $rotaAtual == 'gerencia_livro' ? 'active' : '' ?>">
+        <li><a href="<?= base_url('gerencia_livro')?>" class="<?= $rotaAtual == 'gerencia_livro' ? 'active' : '' ?>">
             <i class="bi bi-circle"></i><span>Gerenciar</span></a>
         </li>
       </ul>
@@ -52,11 +52,11 @@ $rotaAtual = uri_string();
         class="nav-content collapse <?= in_array($rotaAtual, ['cadastrar_aluno', 'GerenciaAluno']) ? 'show' : '' ?>"
         data-bs-parent="#sidebar-nav">
 
-        <li><a href="/cadastrar_aluno" class="<?= $rotaAtual == 'cadastrar_aluno' ? 'active' : '' ?>">
+        <li><a href="<?= base_url('cadastrar_aluno')?>" class="<?= $rotaAtual == 'cadastrar_aluno' ? 'active' : '' ?>">
             <i class="bi bi-circle"></i><span>Cadastrar Aluno</span></a>
         </li>
 
-        <li><a href="/GerenciaAluno" class="<?= $rotaAtual == 'GerenciaAluno' ? 'active' : '' ?>">
+        <li><a href="<?= base_url('GerenciaAluno')?>" class="<?= $rotaAtual == 'GerenciaAluno' ? 'active' : '' ?>">
             <i class="bi bi-circle"></i><span>Gerenciar</span></a>
         </li>
       </ul>
@@ -72,7 +72,7 @@ $rotaAtual = uri_string();
         data-bs-parent="#sidebar-nav">
 
         <li>
-          <a href="/historico_emprestimos" class="<?= $rotaAtual == 'historico_emprestimos' ? 'active' : '' ?>">
+          <a href="<?= base_url('historico_emprestimos')?>" class="<?= $rotaAtual == 'historico_emprestimos' ? 'active' : '' ?>">
             <i class="bi bi-circle"></i><span>Histórico</span></a>
         </li>
 
@@ -81,7 +81,7 @@ $rotaAtual = uri_string();
     </li>
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="/logout">
+      <a class="nav-link collapsed" href="<?= base_url('logout')?>">
         <i class="bi bi-box-arrow-right"></i><span>Sair</span>
       </a>
     </li>

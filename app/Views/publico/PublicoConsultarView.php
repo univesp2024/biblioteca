@@ -6,10 +6,10 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Sistema de Controle da Biblioteca</title>
-  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
-  <link href="/assets/css/publico.css" rel="stylesheet">
+  <link href="<?= base_url('/assets/vendor/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
+  <link href="<?= base_url('/assets/vendor/bootstrap-icons/bootstrap-icons.css')?>" rel="stylesheet">
+  <link href="<?= base_url('/assets/vendor/simple-datatables/style.css')?>" rel="stylesheet">
+  <link href="<?= base_url('/assets/css/publico.css')?>" rel="stylesheet">
 
   <style>
     .alert {
@@ -28,7 +28,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/home">Sistema de Controle da Biblioteca</a>
+      <a class="navbar-brand" href="<?= base_url('home')?>">Sistema de Controle da Biblioteca</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -36,7 +36,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/administrar">Área Restrita</a>
+            <a class="nav-link" href="<?= base_url('administrar')?>">Área Restrita</a>
           </li>
         </ul>
       </div>
@@ -190,7 +190,7 @@
   </div>
 </footer>
 
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 
 <div vw class="enabled">
     <div vw-access-button class="active"></div>

@@ -17,7 +17,7 @@
     <h1>Escolha o livro para devolução</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="home">Início</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('home')?>">Início</a></li>
         <li class="breadcrumb-item">Devolver livro</li>
       </ol>
     </nav>
@@ -96,7 +96,7 @@
     if (selectedAlunoId !== null && selectedLivroId !== null) {
       const encodedLivroId = btoa(unescape(encodeURIComponent(selectedLivroId * 44787654548)));
       const encodedAlunoId = btoa(unescape(encodeURIComponent(selectedAlunoId * 54652154678)));
-      window.location.href = `aluno_devolver/${encodedLivroId}/${encodedAlunoId}`;
+      window.location.href = `<?= base_url('aluno_devolver')?>/${encodedLivroId}/${encodedAlunoId}`;
     }
   });
 

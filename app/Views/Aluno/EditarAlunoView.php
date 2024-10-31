@@ -21,7 +21,7 @@
     <h1>Editar Aluno</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="home">Início</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('home')?>">Início</a></li>
             <li class="breadcrumb-item">Editar Aluno</li>
         </ol>
     </nav>
@@ -30,7 +30,7 @@
 <div class="container">
     <h4 class="text-muted">Informações do aluno a serem editadas:</h4>
 
-    <form id="cadastroForm" action="/editar_aluno_post" method="post" class="needs-validation" novalidate>
+    <form id="cadastroForm" action="<?= base_url('editar_aluno_post'); ?>" method="post" class="needs-validation" novalidate>
 
         <div class="row mb-1">
 

@@ -7,7 +7,7 @@
         <h1>Meu perfil</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="home">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('home')?>">Home</a></li>
                 <li class="breadcrumb-item active">Meu Perfil</li>
             </ol>
         </nav>

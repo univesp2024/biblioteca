@@ -11,7 +11,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!-- css -->
-    <link rel="stylesheet" href="/assets/css/cadastroUsuario.css">
+    <link rel="stylesheet" href="<?= base_url('/assets/css/cadastroUsuario.css')?>">
 </head>
 
 <body class="d-flex justify-content-center align-items-center">
@@ -94,7 +94,7 @@
     </div>
 
     <!-- JS -->
-    <script src="/assets/js/cadastro.js"></script>
+    <script src="<?= base_url('/assets/js/cadastro.js')?>"></script>
 
     <div vw class="enabled">
         <div vw-access-button class="active"></div>

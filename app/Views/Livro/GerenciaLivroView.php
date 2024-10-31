@@ -64,7 +64,7 @@
     <h1>Gerenciar livro</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="home">Início</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('home')?>">Início</a></li>
         <li class="breadcrumb-item">Gerenciar livro</li>
       </ol>
     </nav>
@@ -160,7 +160,7 @@
     document.getElementById('confirmButton').addEventListener('click', function () {
     if (selectedLivroId !== null) {
       const encodedLivroId = btoa(unescape(encodeURIComponent(selectedLivroId * 54655345764678)));
-      window.location.href = `apaga_livro/${encodedLivroId}`;
+      window.location.href = `<?= base_url('apaga_livro')?>/${encodedLivroId}`;
     }
   });
 
@@ -184,7 +184,7 @@
         <td class="text-center">${livro.estante}</td>
         <td class="text-center">${livro.prateleira}</td>
         <td class="text-center">
-            <button class="btn btn-success" onclick="window.location.href='editar_livro/${encodedLivroId}'">Editar</button>
+            <button class="btn btn-success" onclick="window.location.href='<?= base_url('editar_livro')?>/${encodedLivroId}'">Editar</button>
             <button class="btn btn-danger" onclick="openModal(${livro.id_livro})">Delete</button>
         </td>
       </tr>`;

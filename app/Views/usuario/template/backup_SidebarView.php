@@ -19,22 +19,22 @@
       </a>
       <ul id="forms-nav-1" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
-          <a href="cadastrar_livro">
+          <a href="<?= base_url('cadastrar_livro')?>">
             <i class="bi bi-circle"></i><span>Cadastrar</span>
           </a>
         </li>        
         <li>
-          <a href="consultar_livro">
+          <a href="<?= base_url('consultar_livro')?>">
             <i class="bi bi-circle"></i><span>Consultar</span>
           </a>
         </li>
         <li>
-          <a href="emprestar_livro">
+          <a href="<?= base_url('emprestar_livro')?>">
             <i class="bi bi-circle"></i><span>Emprestar</span>
           </a>
         </li>
         <li>
-          <a href="devolver_livro">
+          <a href="<?= base_url('devolver_livro')?>">
             <i class="bi bi-circle"></i><span>Devolver</span>
           </a>
         </li>          
@@ -50,12 +50,12 @@
         </a>
         <ul id="forms-nav-2" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="cadastrar_aluno">
+            <a href="<?= base_url('cadastrar_aluno')?>">
               <i class="bi bi-circle"></i><span>Cadastrar</span>
             </a>
           </li>
           <li>
-            <a href="GerenciaAluno">
+            <a href="<?= base_url('GerenciaAluno')?>">
               <i class="bi bi-circle"></i><span>Gerenciar</span>
             </a>
           </li>
@@ -70,7 +70,7 @@
         </a>
         <ul id="forms-nav-3" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="historico_emprestimos">
+            <a href="<?= base_url('historico_emprestimos')?>">
               <i class="bi bi-circle"></i><span>Histórico</span>
             </a>
           </li>
@@ -86,7 +86,7 @@
 
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="logout">
+    <a class="nav-link collapsed" href="<?= base_url('logout')?>">
       <i class="bi bi-box-arrow-right"></i>
       <span>Sair</span>
     </a>

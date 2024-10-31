@@ -55,7 +55,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="dashboard" class="logo d-flex align-items-center">
-        <img src="/assets/img/logo_web.png" alt="">
+        <img src="<?= base_url('/assets/img/logo_web.png')?>" alt="">
         <span class="d-none d-lg-block">DoeWeb</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -80,7 +80,7 @@
 
 
 
-            <img src="/assets/img/profile-img.png" alt="Profile" class="rounded-circle">
+            <img src="<?= base_url('/assets/img/profile-img.png')?>" alt="Profile" class="rounded-circle">
           </a>
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">

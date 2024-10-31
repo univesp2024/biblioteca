@@ -14,7 +14,7 @@
   <h1>Administração</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+      <li class="breadcrumb-item"><a href="<?= base_url('dashboard')?>">Home</a></li>
       <li class="breadcrumb-item active">Painel de bordo</li>
     </ol>
   </nav>
@@ -186,7 +186,7 @@
                               
                                 <?php if($doacao['status'] == 1): ?>
                                   <span class="badge bg-success">
-                                    <a href="<?= '/doacao_confirmar/'.urlencode( base64_encode($doacao['id_doacao'].';'.rand(1,100000)) );?>">Doei</a>
+                                    <a href="<?= '<?= base_url('/doacao_confirmar/')?>'.urlencode( base64_encode($doacao['id_doacao'].';'.rand(1,100000)) );?>">Doei</a>
                                   </span>
                                 <?php else: ?>
                                   <span class="badge bg-secondary">

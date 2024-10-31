@@ -93,7 +93,7 @@ class LivroController extends BaseController
         echo view("usuario/template/FooterView");
     }   
     
-    public function registra_emprestimo($id_livro,$id_aluno): mixed
+    public function registra_emprestimo($id_livro,$id_aluno): 
     {
         
         $emprestimoModel = new EmprestimosModel();
@@ -107,8 +107,8 @@ class LivroController extends BaseController
         
         $livroModel -> subtrairQuantidade($id_livro);
 
-        //return redirect()->to('/home');
-        return redirect()->to('/home')->with('success', 'Empréstimo finalizado com sucesso!');
+       
+        return redirect()->to(base_url('home'))->with('success', 'Empréstimo finalizado com sucesso!');
     }
 
 
@@ -131,7 +131,7 @@ class LivroController extends BaseController
         echo view("usuario/template/FooterView");
     }
 
-    public function aluno_devolver($id_livro,$id_aluno): mixed
+    public function aluno_devolver($id_livro,$id_aluno) 
     {
         $id_livro = base64_decode($id_livro)/44787654548;
         $id_aluno = base64_decode($id_aluno)/54652154678;
@@ -150,7 +150,7 @@ class LivroController extends BaseController
         //$livroModel -> subtrairQuantidade($id_livro);
 
         //return redirect()->to('/home');
-        return redirect()->to('/home')->with('success', 'Livro restituído com sucesso!');
+        return redirect()->to(base_url('home'))->with('success', 'Livro restituído com sucesso!');
 
     }
 

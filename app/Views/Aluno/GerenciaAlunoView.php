@@ -67,7 +67,7 @@
     <h1>Gerenciar aluno</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="home">Início</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('home')?>">Início</a></li>
         <li class="breadcrumb-item">Gerenciar aluno</li>
       </ol>
     </nav>
@@ -161,7 +161,7 @@
   document.getElementById('confirmButton').addEventListener('click', function () {
     if (selectedAlunoId !== null) {
       const encodedAlunoId = btoa(unescape(encodeURIComponent(selectedAlunoId * 54655345764678)));
-      window.location.href = `apaga_aluno/${encodedAlunoId}`;
+      window.location.href = `<?= base_url('apaga_aluno')?>/${encodedAlunoId}`;
     }
   });
 
@@ -194,7 +194,7 @@
         <td>${formatarData(livro.data_nascimento)}</td>
         <td>${formatarData(livro.data_cadastro)}</td>
           <td class="text-center">
-            <button class="btn btn-success" onclick="window.location.href='editar_aluno/${encodedAlunoId}'">Editar</button>
+            <button class="btn btn-success" onclick="window.location.href='<?= base_url('editar_aluno')?>/${encodedAlunoId}'">Editar</button>
             <button class="btn btn-danger" onclick="openModal(${livro.id_aluno})">Delete</button>
           </td>
       </tr>`;
