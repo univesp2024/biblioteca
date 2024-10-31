@@ -67,15 +67,15 @@ class LoginController extends BaseController
                 }
                 else if ($data['status'] == 0) {
                     $session->setFlashdata('msg', 'Usuário não validado');
-                    return redirect()->to('/');
+                    return redirect()->to(base_url('administrar'));
                 }
             }else{
                 $session->setFlashdata('msg', 'Senha errada');
-                return redirect()->to('/');
+                return redirect()->to(base_url('administrar'));
             }
         }else{
             $session->setFlashdata('msg', 'CPF não encontrado');
-            return redirect()->to('/');
+            return redirect()->to(base_url('administrar'));
         }     
 
     }    
