@@ -181,8 +181,8 @@
         <td>${livro.autor}</td>
         <td>${livro.genero}</td>
         <td>${livro.ano_publicacao}</td>
-        <td class="text-center">${livro.estante}</td>
-        <td class="text-center">${livro.prateleira}</td>
+        <td class="text-center">${livro.estante_formatado}</td>
+        <td class="text-center">${livro.prateleira_formatado}</td>
         <td class="text-center">
             <button class="btn btn-success" onclick="window.location.href='<?= base_url('editar_livro')?>/${encodedLivroId}'">Editar</button>
             <button class="btn btn-danger" onclick="openModal(${livro.id_livro})">Delete</button>

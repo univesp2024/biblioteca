@@ -203,6 +203,10 @@ class LivroController extends BaseController
 
         $livroModel = new LivroModel();
         $dados = $livroModel->dados();
+        //var_dump($dados);
+        //die;
+
+
 
 
         echo view('publico/PublicoConsultarView', [

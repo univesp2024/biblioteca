@@ -77,6 +77,7 @@
       const link = livro.quantidade_disponivel > 0 
         ? `<a href="<?= base_url('finaliza_emprestimo')?>/${encodedlivroId}" class="btn btn-success">Selecionar</a>`
         : `<span class="btn btn-secondary disabled">Indisponível</span>`;
+      const dispo = (livro.quantidade_disponivel == 0)? 'Não': 'Sim';  
 
       const row = `<tr>
         <td>${livro.id_livro_formatado}</td>
@@ -84,9 +85,9 @@
         <td>${livro.autor}</td>
         <td>${livro.genero}</td>
         <td class="text-center">${livro.ano_publicacao}</td>
-        <td class="text-center">${livro.quantidade_disponivel}</td>
-        <td class="text-center">${livro.estante}</td>
-        <td class="text-center">${livro.prateleira}</td>
+        <td class="text-center">${dispo}</td>
+        <td class="text-center">${livro.estante_formatado}</td>
+        <td class="text-center">${livro.prateleira_formatado}</td>
         <td class="text-center">${link}</td>
       </tr>`;
       

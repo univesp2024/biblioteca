@@ -66,8 +66,19 @@ class LivroModel extends Model
     public function dados()
     {
 
+        /*
         $sql = "SELECT livros.*, 
                 CONCAT('T', LPAD(id_livro, 4, '0')) AS id_livro_formatado
+                FROM livros
+                WHERE status='ativo'";
+        $query = $this->db->query($sql);
+        return $query->getResult();
+        */
+
+        $sql = "SELECT livros.*, 
+                CONCAT('T', LPAD(id_livro, 4, '0')) AS id_livro_formatado,
+                CONCAT('E', estante) AS estante_formatado,
+                CONCAT('P', prateleira) AS prateleira_formatado
                 FROM livros
                 WHERE status='ativo'";
         $query = $this->db->query($sql);

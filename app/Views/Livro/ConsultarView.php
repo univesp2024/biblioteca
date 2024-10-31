@@ -73,15 +73,16 @@
     const pageData = filteredData.slice(start, end); // Dados da página atual
 
     pageData.forEach(livro => {
+      const dispo = (livro.quantidade_disponivel == 0)? 'Não': 'Sim';
       const row = `<tr>
         <td>${livro.id_livro_formatado}</td>
         <td>${livro.titulo}</td>
         <td>${livro.autor}</td>
         <td>${livro.genero}</td>
         <td>${livro.ano_publicacao}</td>
-        <td class="text-center">${livro.quantidade_disponivel}</td>
-        <td class="text-center">${livro.estante}</td>
-        <td class="text-center">${livro.prateleira}</td>
+        <td class="text-center">${dispo}</td>
+        <td class="text-center">${livro.estante_formatado}</td>
+        <td class="text-center">${livro.prateleira_formatado}</td>
       </tr>`;
       tbody.innerHTML += row;
     });

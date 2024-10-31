@@ -103,8 +103,8 @@
         <td>${livro.autor}</td>
         <td>${livro.genero}</td>
         <td>${livro.ano_publicacao}</td>
-        <td>${livro.estante}</td>
-        <td>${livro.prateleira}</td>
+        <td>${livro.estante_formatado}</td>
+        <td>${livro.prateleira_formatado}</td>
         <td>${disponibilidade}</td>
       </tr>`;
       tbody.innerHTML += row;
