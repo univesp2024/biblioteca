@@ -87,8 +87,10 @@ class UsuarioController extends BaseController
         
         $id_usuario = session()->get('id_usuario');
 
+        $cpfLimpo = str_replace(['.', '-'], '', $this->request->getPost('cpf'));
+
         $data = [
-            'cpf' => $this->request->getPost('cpf'),
+            //'cpf' => $cpfLimpo,
             'nome_completo' => $this->request->getPost('nome_completo'),
             'data_nascimento' => $this->request->getPost('data_nascimento'),
             'endereco' => $this->request->getPost('endereco'),
@@ -97,6 +99,12 @@ class UsuarioController extends BaseController
             'email' => $this->request->getPost('email'),
             'sexo' => $this->request->getPost('sexo'),
         ];
+
+        //var_dump($data);
+        //die;
+
+
+        
 
         //$model->insert($data);
         $model->update($id_usuario, $data);
@@ -108,7 +116,7 @@ class UsuarioController extends BaseController
         ];
         $session->set($ses_data);
 
-        return redirect()->to(site_url('/sucesso'))->with('mensagem', 'Atualização realizada com sucesso!');
+        return redirect()->to(base_url('meuperfil'))->with('mensagem', 'Atualização realizada com sucesso!');
         //return redirect()->to(site_url('/sucesso'));
     }
 

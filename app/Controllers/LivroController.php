@@ -93,7 +93,7 @@ class LivroController extends BaseController
         echo view("usuario/template/FooterView");
     }   
     
-    public function registra_emprestimo($id_livro,$id_aluno): 
+    public function registra_emprestimo($id_livro,$id_aluno) 
     {
         
         $emprestimoModel = new EmprestimosModel();
