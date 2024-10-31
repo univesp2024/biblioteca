@@ -66,13 +66,13 @@
 
                                     <div class="col-md-4">
                                         <label for="estante" class="form-label">Estante:</label>
-                                        <input type="text" name="estante" class="form-control"
+                                        <input type="number" name="estante" class="form-control"
                                             placeholder="Qual estante o livro ficará?" required>
                                     </div>
 
                                     <div class="col-md-4">
                                         <label for="prateleira" class="form-label">Prateleira:</label>
-                                        <input type="text" name="prateleira" class="form-control"
+                                        <input type="number" name="prateleira" class="form-control"
                                             placeholder="Qual a prateleira?" required>
                                     </div>
                                 </div>
